@@ -1,0 +1,73 @@
+<!-- AID DISTRIBUTION HEADER ACTION BAR -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div>
+    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Social Welfare & Relief Distribution Logs</h2>
+    <p class="text-xs text-slate-500 font-medium">Tracking aid allocation for typhoons, agricultural assistance, and senior subsidies</p>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <button onclick="triggerAIAidMatrix()" class="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>AI Vulnerability Allocation</span>
+    </button>
+  </div>
+</div>
+
+<!-- RELIEF METRICS OVERVIEW -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+  <div class="gov-card p-4 rounded-2xl">
+    <p class="text-[11px] font-bold text-slate-400 uppercase">Total SAP / Calamity Budget</p>
+    <h3 class="text-2xl font-extrabold text-slate-900 mt-1">₱ 450,000</h3>
+    <p class="text-[11px] text-teal-700 font-semibold mt-0.5">Municipal Allocation</p>
+  </div>
+  <div class="gov-card p-4 rounded-2xl">
+    <p class="text-[11px] font-bold text-slate-400 uppercase">Beneficiary Families</p>
+    <h3 class="text-2xl font-extrabold text-teal-800 mt-1">195</h3>
+    <p class="text-[11px] text-teal-700 font-semibold mt-0.5">Verified Indigents & 4Ps</p>
+  </div>
+  <div class="gov-card p-4 rounded-2xl">
+    <p class="text-[11px] font-bold text-slate-400 uppercase">Rice & Grocery Packs</p>
+    <h3 class="text-2xl font-extrabold text-blue-800 mt-1">420 Packs</h3>
+    <p class="text-[11px] text-blue-700 font-semibold mt-0.5">Disbursed this Quarter</p>
+  </div>
+  <div class="gov-card p-4 rounded-2xl">
+    <p class="text-[11px] font-bold text-slate-400 uppercase">Emergency Reserve</p>
+    <h3 class="text-2xl font-extrabold text-amber-700 mt-1">₱ 120,000</h3>
+    <p class="text-[11px] text-amber-600 font-semibold mt-0.5">Calamity Contingency</p>
+  </div>
+</div>
+
+<!-- AI RECOMMENDATION CARD -->
+<div id="aiAidBox" class="hidden gov-card p-5 rounded-2xl border border-teal-300 bg-teal-50/70 space-y-3">
+  <div class="flex items-center justify-between border-b border-teal-200 pb-3">
+    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm">
+      <i class="fa-solid fa-robot text-teal-700"></i> AI Recommended Beneficiaries Matrix
+    </div>
+    <button onclick="document.getElementById('aiAidBox').classList.add('hidden')" class="text-slate-400 hover:text-slate-700">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <p id="aiAidText" class="text-xs text-slate-800 leading-relaxed font-mono whitespace-pre-line font-medium"></p>
+</div>
+
+<!-- DISTRIBUTION TABLE -->
+<div class="gov-card rounded-2xl overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full text-left text-sm text-slate-700">
+      <thead class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
+        <tr>
+          <th class="px-4 py-3.5">Relief Program</th>
+          <th class="px-4 py-3.5">Beneficiary Resident</th>
+          <th class="px-4 py-3.5">Type & Package</th>
+          <th class="px-4 py-3.5">Distribution Date</th>
+          <th class="px-4 py-3.5">Status</th>
+          <th class="px-4 py-3.5 text-right">AI Source</th>
+        </tr>
+      </thead>
+      <tbody id="aidTableBody" class="divide-y divide-slate-200">
+        <!-- Dynamically populated -->
+      </tbody>
+    </table>
+  </div>
+</div>
+

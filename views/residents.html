@@ -1,0 +1,232 @@
+<!-- HEADER ACTION BAR -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div>
+    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Resident Database Directory</h2>
+    <p class="text-xs text-slate-500 font-medium">Master population registry of Barangay Dacutan, Dumangas, Iloilo</p>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <button onclick="openModal('addResidentModal')" class="px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold shadow-sm flex items-center gap-2 transition-all">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>Add New Resident</span>
+    </button>
+    <button onclick="showToast('Exporting Resident Directory to Excel...', 'info')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold border border-slate-300 shadow-sm flex items-center gap-2 transition-all">
+      <i class="fa-solid fa-file-excel text-emerald-700"></i>
+      <span>Export CSV</span>
+    </button>
+  </div>
+</div>
+
+<!-- FILTER & SEARCH CONTROL BAR -->
+<div class="gov-card p-4 rounded-2xl space-y-3">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <!-- Search Input -->
+    <div class="relative">
+      <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+      <input type="text" id="searchInput" onkeyup="filterResidents()" placeholder="Search name, Resident ID..." class="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-emerald-600 transition-all font-medium">
+    </div>
+
+    <!-- Purok Filter -->
+    <div>
+      <select id="purokFilter" onchange="filterResidents()" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-emerald-600 font-medium">
+        <option value="All">All Sitios & Puroks</option>
+        <option value="Purok 1">Purok 1</option>
+        <option value="Purok 2">Purok 2</option>
+        <option value="Purok 3">Purok 3</option>
+        <option value="Purok 4">Purok 4</option>
+        <option value="Purok 5">Purok 5</option>
+        <option value="Sitio Ilawod">Sitio Ilawod</option>
+      </select>
+    </div>
+
+    <!-- Category Sector Filter -->
+    <div>
+      <select id="sectorFilter" onchange="filterResidents()" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs focus:outline-none focus:border-emerald-600 font-medium">
+        <option value="All">All Special Sectors</option>
+        <option value="Senior">Senior Citizens</option>
+        <option value="PWD">Persons with Disability (PWD)</option>
+        <option value="Indigent">Indigent / 4Ps Beneficiary</option>
+        <option value="SoloParent">Solo Parents</option>
+      </select>
+    </div>
+
+    <!-- Quick Reset -->
+    <div>
+      <button onclick="resetFilters()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 text-xs font-bold border border-slate-300 transition-all">
+        <i class="fa-solid fa-rotate-left mr-1"></i> Reset Filters
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- RESIDENTS TABLE -->
+<div class="gov-card rounded-2xl overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full text-left text-sm text-slate-700">
+      <thead class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
+        <tr>
+          <th class="px-4 py-3.5">Resident ID</th>
+          <th class="px-4 py-3.5">Full Name</th>
+          <th class="px-4 py-3.5">Age & Gender</th>
+          <th class="px-4 py-3.5">Purok / Address</th>
+          <th class="px-4 py-3.5">Occupation</th>
+          <th class="px-4 py-3.5">Sectors</th>
+          <th class="px-4 py-3.5 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="residentTableBody" class="divide-y divide-slate-200">
+        <!-- Dynamically Populated -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- VIEW RESIDENT MODAL -->
+<div id="viewResidentModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4">
+  <div class="gov-card modal-content max-w-xl w-full rounded-2xl border border-slate-300 p-6 space-y-5 bg-white shadow-2xl">
+    <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+      <div class="flex items-center gap-3">
+        <img id="modalPhoto" src="" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-600">
+        <div>
+          <h3 id="modalName" class="text-lg font-bold text-slate-900">Juan Dacutan</h3>
+          <p id="modalResId" class="text-xs font-mono text-emerald-800 font-bold">DAC-2026-0001</p>
+        </div>
+      </div>
+      <button onclick="closeModal('viewResidentModal')" class="text-slate-400 hover:text-slate-700 p-2">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 text-xs">
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Age & Gender</span>
+        <p id="modalAgeGender" class="font-bold text-slate-800">-</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Civil Status</span>
+        <p id="modalCivilStatus" class="font-bold text-slate-800">-</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Purok & Address</span>
+        <p id="modalAddress" class="font-bold text-slate-800">-</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Occupation & Income</span>
+        <p id="modalOccupation" class="font-bold text-slate-800">-</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Voter Precinct</span>
+        <p id="modalVoter" class="font-bold text-slate-800">-</p>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-slate-500 font-medium">Contact Number</span>
+        <p id="modalContact" class="font-bold text-slate-800">-</p>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+      <button onclick="closeModal('viewResidentModal')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-300">Close</button>
+      <a href="#/certificates" onclick="closeModal('viewResidentModal')" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center gap-1">
+        <i class="fa-solid fa-file-signature"></i> Issue Certificate
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ADD RESIDENT MODAL -->
+<div id="addResidentModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4">
+  <div class="gov-card modal-content max-w-2xl w-full rounded-2xl border border-slate-300 p-6 space-y-5 bg-white shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+      <div>
+        <h3 class="text-lg font-bold text-slate-900">Register New Resident</h3>
+        <p class="text-xs text-slate-500">Add resident record to Barangay Dacutan database</p>
+      </div>
+      <button onclick="closeModal('addResidentModal')" class="text-slate-400 hover:text-slate-700 p-2">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <form id="addResidentForm" onsubmit="handleAddResident(event)" class="space-y-4 text-xs">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">First Name *</label>
+          <input type="text" id="resFirstName" required placeholder="e.g. Roberto" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Middle Name</label>
+          <input type="text" id="resMiddleName" placeholder="e.g. Dela Cruz" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Last Name *</label>
+          <input type="text" id="resLastName" required placeholder="e.g. Dacutan" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Gender *</label>
+          <select id="resGender" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Date of Birth *</label>
+          <input type="date" id="resDob" required class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Purok / Location *</label>
+          <select id="resPurok" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+            <option value="Purok 1">Purok 1</option>
+            <option value="Purok 2">Purok 2</option>
+            <option value="Purok 3">Purok 3</option>
+            <option value="Purok 4">Purok 4</option>
+            <option value="Purok 5">Purok 5</option>
+            <option value="Sitio Ilawod">Sitio Ilawod</option>
+            <option value="Sitio Ilaya">Sitio Ilaya</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Occupation</label>
+          <input type="text" id="resOccupation" placeholder="e.g. Farmer / Teacher" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+        <div>
+          <label class="block text-slate-600 font-semibold mb-1">Contact Number</label>
+          <input type="text" id="resContact" placeholder="0917-000-0000" class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-emerald-600">
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <label class="block text-slate-700 font-bold mb-2">Sector Classifications</label>
+        <div class="flex flex-wrap gap-4 font-semibold text-slate-700">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="resIsSenior" class="accent-emerald-700">
+            <span>Senior Citizen (60+)</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="resIsPwd" class="accent-emerald-700">
+            <span>PWD</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="resIsIndigent" class="accent-emerald-700">
+            <span>Indigent / 4Ps</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 flex justify-end gap-2">
+        <button type="button" onclick="closeModal('addResidentModal')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold shadow-md">Save Resident</button>
+      </div>
+    </form>
+  </div>
+</div>
+

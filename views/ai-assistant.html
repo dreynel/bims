@@ -1,0 +1,73 @@
+<!-- AI WORKSPACE HEADER -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div>
+    <h2 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+      <i class="fa-solid fa-wand-magic-sparkles text-emerald-600"></i>
+      Dacutan AI Copilot
+    </h2>
+    <p class="text-xs text-slate-500 font-medium">Smart administrative assistant, legal KP advisor, and resolution draft generator</p>
+  </div>
+
+  <!-- Language Selector Toggle -->
+  <div class="flex items-center gap-2">
+    <span class="text-xs text-slate-600 font-bold hidden sm:inline">Language:</span>
+    <div class="flex rounded-xl bg-slate-200 p-1 text-xs border border-slate-300">
+      <button onclick="setLanguage('en')" id="langEn" class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white font-bold transition-all shadow-sm">English</button>
+      <button onclick="setLanguage('hil')" id="langHil" class="px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition-all font-semibold">Hiligaynon</button>
+      <button onclick="setLanguage('tl')" id="langTl" class="px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition-all font-semibold">Tagalog</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT WORKSPACE WRAPPER -->
+<div class="flex flex-col space-y-4 max-w-5xl mx-auto w-full min-h-[550px]">
+
+  <!-- QUICK PROMPT CHIPS -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+    <span class="text-slate-500 font-bold uppercase text-[10px] shrink-0">Quick Prompts:</span>
+    <button onclick="sendQuickPrompt('Show senior citizens in Purok 4')" class="px-3 py-1.5 rounded-full bg-white border border-slate-300 hover:border-emerald-600 text-slate-700 shrink-0 font-semibold transition-all shadow-sm">
+      👴 Senior Citizens in Purok 4
+    </button>
+    <button onclick="sendQuickPrompt('Draft resolution for coastal environmental safety')" class="px-3 py-1.5 rounded-full bg-white border border-slate-300 hover:border-emerald-600 text-slate-700 shrink-0 font-semibold transition-all shadow-sm">
+      📜 Draft Coastal Ordinance Resolution
+    </button>
+    <button onclick="sendQuickPrompt('Summarize active blotter dispute')" class="px-3 py-1.5 rounded-full bg-white border border-slate-300 hover:border-emerald-600 text-slate-700 shrink-0 font-semibold transition-all shadow-sm">
+      ⚖️ Summarize Active KP Blotter
+    </button>
+    <button onclick="sendQuickPrompt('Filter 4Ps families for disaster relief')" class="px-3 py-1.5 rounded-full bg-white border border-slate-300 hover:border-emerald-600 text-slate-700 shrink-0 font-semibold transition-all shadow-sm">
+      📦 Relief Distribution Priority
+    </button>
+  </div>
+
+  <!-- CHAT CONSOLE DISPLAY BOX -->
+  <div id="chatDisplay" class="flex-1 gov-card rounded-2xl p-5 overflow-y-auto space-y-4 border border-slate-200 bg-white min-h-[380px] max-h-[500px]">
+    <!-- Initial AI Welcome Message -->
+    <div class="flex items-start gap-3">
+      <div class="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-800 shrink-0 ai-pulse-glow">
+        <i class="fa-solid fa-robot"></i>
+      </div>
+      <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 max-w-2xl text-xs space-y-2">
+        <div class="flex items-center justify-between font-bold text-emerald-800">
+          <span>Dacutan AI Copilot</span>
+          <span class="text-[10px] text-slate-500 font-mono">BIMS Assistant v1.0</span>
+        </div>
+        <p class="text-slate-800 leading-relaxed font-medium">
+          Maayong adlaw! I am your Barangay Dacutan AI Assistant. Ask me anything regarding resident records, disaster relief targeting, Katarungang Pambarangay dispute advice, or drafting barangay resolutions.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUT BAR -->
+  <div class="gov-card p-3 rounded-2xl border border-slate-200">
+    <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+      <input type="text" id="aiInput" placeholder="Type your instruction or question (e.g. 'Draft resolution for barangay curfew')..." class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 font-medium text-xs sm:text-sm focus:outline-none focus:border-emerald-700 transition-all">
+      <button type="submit" class="px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all shrink-0">
+        <span>Send</span>
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+      </button>
+    </form>
+  </div>
+
+</div>
+

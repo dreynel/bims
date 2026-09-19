@@ -1,0 +1,722 @@
+<!-- BARANGAY DACUTAN PUBLIC CITIZEN PORTAL (GovPH Standard) -->
+
+<!-- 1. HERO SHOWCASE & CITIZEN WELCOME BANNER -->
+<div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-blue-950 to-emerald-950 text-white p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-700/50">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="lg:col-span-8 space-y-4">
+      
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+        <i class="fa-solid fa-landmark text-amber-400"></i>
+        <span>Republika ng Pilipinas • Bayan ng Dumangas</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Barangay Dacutan <br>
+        <span class="gradient-text-emerald">Citizen E-Services Portal</span>
+      </h2>
+
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-medium">
+        Welcome to the official digital service window of Barangay Dacutan, Dumangas, Iloilo. Apply for official barangay documents online, track real-time application status, and stay informed with official community advisories.
+      </p>
+
+      <div class="flex flex-wrap gap-3 pt-3">
+        <a href="#services-section" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-emerald-900/30 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-file-signature"></i>
+          <span>Apply for Documents</span>
+        </a>
+        <a href="#tracker-section" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
+          <i class="fa-solid fa-magnifying-glass text-amber-400"></i>
+          <span>Track Application</span>
+        </a>
+        <a href="#hotlines-section" class="px-5 py-3 rounded-xl bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 font-bold text-xs sm:text-sm border border-rose-500/30 backdrop-blur-md transition-all flex items-center gap-2">
+          <i class="fa-solid fa-phone-volume"></i>
+          <span>Emergency Hotlines</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Stats / Public Hall Info Card -->
+    <div class="lg:col-span-4 gov-card p-6 rounded-2xl bg-white/95 backdrop-blur-md text-slate-900 shadow-2xl border-2 border-emerald-500/40 space-y-4">
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+        <img src="assets/images/logo.svg" alt="Seal" class="w-11 h-11 drop-shadow">
+        <div>
+          <h3 class="font-bold text-sm text-slate-900 leading-tight">Barangay Hall of Dacutan</h3>
+          <p class="text-[11px] text-slate-500 font-medium">Main Road, Brgy. Dacutan, Dumangas</p>
+        </div>
+      </div>
+
+      <div class="space-y-2.5 text-xs font-semibold">
+        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50">
+          <span class="text-slate-600 flex items-center gap-2">
+            <i class="fa-regular fa-clock text-emerald-600"></i> Office Hours:
+          </span>
+          <span class="text-slate-900 font-bold">Mon - Fri: 8:00 AM - 5:00 PM</span>
+        </div>
+        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50">
+          <span class="text-slate-600 flex items-center gap-2">
+            <i class="fa-solid fa-phone text-blue-600"></i> Hall Desk:
+          </span>
+          <span class="text-blue-900 font-mono font-bold">(033) 396-1024</span>
+        </div>
+        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50">
+          <span class="text-slate-600 flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-rose-600"></i> Tanod Duty:
+          </span>
+          <span class="text-rose-900 font-mono font-bold">24/7 On-Call Desk</span>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-slate-200/80 flex items-center justify-between text-[11px] text-slate-500">
+        <span>Punong Barangay:</span>
+        <span class="font-bold text-slate-900">Hon. Roberto D. Dacutan</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. ONE-STOP BARANGAY E-SERVICES SECTION -->
+<section id="services-section" class="space-y-5 pt-4">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-200 pb-3">
+    <div>
+      <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+        <i class="fa-solid fa-stamp text-emerald-700"></i>
+        <span>Official Barangay E-Services</span>
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-500 font-medium">Select a document to apply online for fast-track processing at the Barangay Hall</p>
+    </div>
+    <span class="badge badge-green self-start sm:self-auto">5 Active Services Available</span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    
+    <!-- Service 1: Barangay Clearance -->
+    <div class="gov-card p-6 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold border border-emerald-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-file-shield"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-base text-slate-900">Barangay Clearance</h4>
+            <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">₱ 50.00</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Certifies good moral standing and residency for Local Employment, Postal ID, Police Clearance, NBI, and Travel requirements.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Processing: Same Day</span>
+        <button onclick="selectServiceForRequest('Barangay Clearance')" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-700 hover:text-white text-emerald-800 font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Apply Now</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Service 2: Certificate of Indigency -->
+    <div class="gov-card p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl font-bold border border-blue-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-base text-slate-900">Certificate of Indigency</h4>
+            <span class="text-xs font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded-full">100% FREE</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Issued to qualified low-income residents for Medical Assistance at WVMC/RHU, Hospital Bills, PAO Legal Assistance, and DSWD Aid.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Processing: Same Day</span>
+        <button onclick="selectServiceForRequest('Certificate of Indigency')" class="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-700 hover:text-white text-blue-800 font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Apply Now</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Service 3: Certificate of Residency -->
+    <div class="gov-card p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-xl font-bold border border-amber-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-house-chimney-user"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-base text-slate-900">Certificate of Residency</h4>
+            <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">₱ 50.00</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Official proof of domicile in Barangay Dacutan. Required for Bank Account opening, School Enrollment, Voter Registration, and utility connections.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Processing: Same Day</span>
+        <button onclick="selectServiceForRequest('Certificate of Residency')" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-700 hover:text-white text-amber-800 font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Apply Now</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Service 4: First Time Job Seeker (RA 11261) -->
+    <div class="gov-card p-6 rounded-2xl bg-white border border-slate-200 hover:border-purple-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl font-bold border border-purple-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-base text-slate-900">First-Time Jobseeker</h4>
+            <span class="text-xs font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded-full">FREE (RA 11261)</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Under Republic Act 11261, newly graduated students and first-time workers are exempted from government document fees.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Processing: Same Day</span>
+        <button onclick="selectServiceForRequest('First Time Job Seeker (RA 11261)')" class="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-700 hover:text-white text-purple-800 font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Apply Now</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Service 5: Barangay Business Clearance -->
+    <div class="gov-card p-6 rounded-2xl bg-white border border-slate-200 hover:border-teal-500 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center text-xl font-bold border border-teal-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-shop"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-base text-slate-900">Barangay Business Clearance</h4>
+            <span class="text-xs font-bold text-teal-800 bg-teal-100 px-2 py-0.5 rounded-full">₱ 150.00</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Required for sari-sari stores, coastal fisheries, agri-enterprises, and commercial stalls operating within Barangay Dacutan jurisdiction.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Processing: 1-2 Days</span>
+        <button onclick="selectServiceForRequest('Barangay Business Clearance')" class="px-3.5 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-700 hover:text-white text-teal-800 font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Apply Now</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Helpdesk Fast Inquiry Card -->
+    <div class="gov-card p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white border border-slate-700 shadow-sm flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/30">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-base text-white">Dacutan AI Citizen Helpdesk</h4>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Have questions about clearance requirements, Cedula fees, or Lupon conciliation? Our AI assistant is ready to help 24/7.
+          </p>
+        </div>
+      </div>
+      <div class="pt-4 mt-4 border-t border-slate-700 flex items-center justify-between">
+        <span class="text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Online
+        </span>
+        <button onclick="openCitizenHelpdesk()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center gap-1.5">
+          <span>Chat Helpdesk</span>
+          <i class="fa-solid fa-comments text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 3. INTERACTIVE DOCUMENT STATUS TRACKER -->
+<section id="tracker-section" class="gov-card p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 pb-4">
+    <div>
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+        <i class="fa-solid fa-magnifying-glass text-blue-700"></i>
+        <span>Live Document Tracking System</span>
+      </h3>
+      <p class="text-xs text-slate-500 font-medium">Verify the progress of your submitted clearance or indigency certificate in real time</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="loadSampleTracking('DAC-2026-0042')" class="text-xs font-bold text-blue-700 hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 transition-all">
+        Try Sample: DAC-2026-0042
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Input Area -->
+  <div class="max-w-2xl mx-auto">
+    <div class="flex gap-2">
+      <div class="relative flex-1">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+          <i class="fa-solid fa-barcode text-sm"></i>
+        </div>
+        <input 
+          type="text" 
+          id="trackingInput" 
+          placeholder="Enter Application Ref No. (e.g. DAC-2026-0042)" 
+          class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 bg-slate-50/50 text-slate-900 font-bold text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+      </div>
+      <button 
+        type="button" 
+        onclick="performPublicTracking()" 
+        class="px-6 py-3 rounded-2xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm shadow-md transition-all flex items-center gap-2">
+        <i class="fa-solid fa-search"></i>
+        <span>Track</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Real-Time Progress Visualizer (Populated dynamically) -->
+  <div id="trackingResultContainer" class="hidden pt-4 border-t border-slate-200/80">
+    <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+        <div>
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Application Reference</span>
+          <h4 class="text-base font-extrabold text-slate-900 font-mono" id="trackRefNo">DAC-2026-0042</h4>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-bold text-slate-600" id="trackDocType">Barangay Clearance</span>
+          <span class="badge badge-green" id="trackStatusBadge">Ready for Release</span>
+        </div>
+      </div>
+
+      <!-- Step Progress Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <!-- Step 1 -->
+        <div class="flex sm:flex-col items-center gap-3 text-center">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="text-left sm:text-center">
+            <p class="text-xs font-bold text-slate-900">1. Submitted</p>
+            <p class="text-[10px] text-slate-500">Online Queue</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex sm:flex-col items-center gap-3 text-center">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="text-left sm:text-center">
+            <p class="text-xs font-bold text-slate-900">2. Evaluated</p>
+            <p class="text-[10px] text-slate-500">Secretary Verified</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex sm:flex-col items-center gap-3 text-center">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="text-left sm:text-center">
+            <p class="text-xs font-bold text-slate-900">3. Approved</p>
+            <p class="text-[10px] text-slate-500">Punong Brgy Signed</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex sm:flex-col items-center gap-3 text-center">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm shrink-0 animate-bounce">
+            <i class="fa-solid fa-building-flag"></i>
+          </div>
+          <div class="text-left sm:text-center">
+            <p class="text-xs font-bold text-emerald-800">4. Ready for Release</p>
+            <p class="text-[10px] text-emerald-600 font-semibold">Pick up at Hall</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+          <span>Document is signed and ready for release. Please present valid ID at the Barangay Secretary desk.</span>
+        </div>
+        <span class="font-bold font-mono">Window 1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ONLINE APPLICATION FORM SECTION -->
+<section id="request-section" class="gov-card p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+  <div class="border-b border-slate-200 pb-4">
+    <h3 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+      <i class="fa-solid fa-file-circle-plus text-emerald-700"></i>
+      <span>Online Document Application Form</span>
+    </h3>
+    <p class="text-xs text-slate-500 font-medium">Fill out the official request form below. You will receive an instant tracking reference number.</p>
+  </div>
+
+  <form id="publicApplicationForm" onsubmit="handlePublicDocSubmission(event)" class="space-y-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      
+      <!-- Full Name -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Full Name (First, Middle, Last) *</label>
+        <input 
+          type="text" 
+          id="appFullName" 
+          required 
+          placeholder="e.g. Roberto M. Dela Cruz" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+
+      <!-- Contact Number -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Mobile Contact Number *</label>
+        <input 
+          type="tel" 
+          id="appContact" 
+          required 
+          placeholder="0917-123-4567" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+
+      <!-- Purok / Sitio -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Purok / Sitio Residence *</label>
+        <select 
+          id="appPurok" 
+          required 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-bold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <option value="Purok 1">Purok 1</option>
+          <option value="Purok 2">Purok 2</option>
+          <option value="Purok 3">Purok 3</option>
+          <option value="Purok 4">Purok 4</option>
+          <option value="Purok 5">Purok 5</option>
+          <option value="Purok 6">Purok 6</option>
+          <option value="Purok 7">Purok 7</option>
+          <option value="Sitio Ilawod">Sitio Ilawod</option>
+          <option value="Sitio Ilaya">Sitio Ilaya</option>
+        </select>
+      </div>
+
+      <!-- Document Type Requested -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Document Type Requested *</label>
+        <select 
+          id="appDocType" 
+          required 
+          onchange="updateFeePreview()"
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-bold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <option value="Barangay Clearance">Barangay Clearance</option>
+          <option value="Certificate of Indigency">Certificate of Indigency</option>
+          <option value="Certificate of Residency">Certificate of Residency</option>
+          <option value="First Time Job Seeker (RA 11261)">First Time Job Seeker (RA 11261)</option>
+          <option value="Barangay Business Clearance">Barangay Business Clearance</option>
+        </select>
+      </div>
+
+      <!-- Purpose of Request -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Purpose of Application *</label>
+        <input 
+          type="text" 
+          id="appPurpose" 
+          required 
+          placeholder="e.g. Local Employment, Bank Requirement, Medical" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+
+      <!-- Cedula / CTC Number -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1.5">Community Tax Cert (Cedula) # (Optional)</label>
+        <input 
+          type="text" 
+          id="appCedula" 
+          placeholder="e.g. CTC-2026-0981" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50/50 text-slate-900 text-xs font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+    </div>
+
+    <!-- Fee Calculation & Disclaimer Banner -->
+    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm shrink-0">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+        <div>
+          <span class="text-slate-500">Assessed Fee for Requested Document:</span>
+          <p class="font-extrabold text-sm text-emerald-800" id="feeDisplay">₱ 50.00 (Payable upon pick-up)</p>
+        </div>
+      </div>
+      <button 
+        type="submit" 
+        class="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md flex items-center justify-center gap-2 transition-all">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Submit Document Application</span>
+      </button>
+    </div>
+  </form>
+</section>
+
+<!-- 5. COMMUNITY ADVISORIES & SANGGUNIANG BARANGAY RESOLUTIONS -->
+<section id="advisories-section" class="space-y-4">
+  <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+    <div>
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+        <i class="fa-solid fa-bullhorn text-amber-600"></i>
+        <span>Community Bulletins & Ordinances</span>
+      </h3>
+      <p class="text-xs text-slate-500 font-medium">Official announcements from the Sangguniang Barangay of Dacutan</p>
+    </div>
+    <span class="badge badge-yellow">Updated Today</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    
+    <!-- Advisory 1: Weather & Flood Warning -->
+    <div class="gov-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 transition-all space-y-3">
+      <div class="flex items-center justify-between text-xs">
+        <span class="badge badge-blue">PAGASA Weather Alert</span>
+        <span class="text-slate-400 font-medium">Dumangas Coastal</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900">High Tide & Coastal Advisory (Purok 3 & Sitio Ilawod)</h4>
+      <p class="text-xs text-slate-600 leading-relaxed font-medium">
+        Residents along the coastal zone are advised of a predicted 1.6m high tide at 4:30 PM. Barangay Tanods are deployed for monitoring.
+      </p>
+    </div>
+
+    <!-- Advisory 2: Health Outreach -->
+    <div class="gov-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 transition-all space-y-3">
+      <div class="flex items-center justify-between text-xs">
+        <span class="badge badge-green">Health Outreach</span>
+        <span class="text-slate-400 font-medium">Brgy. Gymnasium</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900">Free Anti-Rabies Vaccination for Pets</h4>
+      <p class="text-xs text-slate-600 leading-relaxed font-medium">
+        The Municipal Agriculture Office of Dumangas will conduct free rabies shots for dogs and cats this Saturday, 8:00 AM at the Covered Court.
+      </p>
+    </div>
+
+    <!-- Advisory 3: Peace & Order Curfew -->
+    <div class="gov-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 transition-all space-y-3">
+      <div class="flex items-center justify-between text-xs">
+        <span class="badge badge-red">Municipal Ordinance</span>
+        <span class="text-slate-400 font-medium">Dumangas LGU</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900">Minor Curfew & Videoke Quiet Hours Notice</h4>
+      <p class="text-xs text-slate-600 leading-relaxed font-medium">
+        Strict implementation of 10:00 PM curfew for minors under 18 and restriction of loud videoke operations in compliance with Municipal Ordinance No. 2024-04.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 6. SANGGUNIANG BARANGAY LEADERSHIP DIRECTORY -->
+<section id="officials-section" class="space-y-4">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-200 pb-3">
+    <div>
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+        <i class="fa-solid fa-users-viewfinder text-emerald-700"></i>
+        <span>Sangguniang Barangay Leadership Roster</span>
+      </h3>
+      <p class="text-xs text-slate-500 font-medium">Barangay Dacutan Officials, Committee Chairmanships & Secretariat</p>
+    </div>
+    <span class="badge badge-green">Term 2023 - 2026</span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    
+    <!-- Punong Barangay Card -->
+    <div class="gov-card p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-500 shadow-sm text-center space-y-3">
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Punong Barangay" class="w-20 h-20 rounded-full mx-auto border-3 border-emerald-600 object-cover shadow">
+      <div>
+        <h4 class="font-extrabold text-sm text-slate-900">Hon. Roberto D. Dacutan</h4>
+        <p class="text-xs font-bold text-emerald-800 uppercase tracking-wide">Punong Barangay</p>
+        <p class="text-[10px] text-slate-500 mt-1 font-medium">Overall Executive Governance & Peace and Order</p>
+      </div>
+    </div>
+
+    <!-- Kagawad 1 -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Kagawad" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Arnel B. Defensor</h4>
+        <p class="text-[11px] font-semibold text-blue-700">Barangay Kagawad</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Peace & Order / Lupon</p>
+      </div>
+    </div>
+
+    <!-- Kagawad 2 -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Kagawad" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Maria Teresa S. Balleza</h4>
+        <p class="text-[11px] font-semibold text-blue-700">Barangay Kagawad</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Health & Sanitation</p>
+      </div>
+    </div>
+
+    <!-- Kagawad 3 -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Kagawad" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Rommel J. Demaisip</h4>
+        <p class="text-[11px] font-semibold text-blue-700">Barangay Kagawad</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Agriculture & Fisheries</p>
+      </div>
+    </div>
+
+    <!-- Kagawad 4 -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Kagawad" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Carmen L. Villanueva</h4>
+        <p class="text-[11px] font-semibold text-blue-700">Barangay Kagawad</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Appropriations & Budget</p>
+      </div>
+    </div>
+
+    <!-- Kagawad 5 -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Kagawad" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Jose Marie G. Tupas</h4>
+        <p class="text-[11px] font-semibold text-blue-700">Barangay Kagawad</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Infrastructure & Roads</p>
+      </div>
+    </div>
+
+    <!-- SK Chairperson -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="SK" class="w-16 h-16 rounded-full mx-auto border-2 border-purple-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Hon. Bea Andrea Divinagracia</h4>
+        <p class="text-[11px] font-semibold text-purple-700">SK Chairperson</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Comm. on Youth & Sports</p>
+      </div>
+    </div>
+
+    <!-- Barangay Secretary -->
+    <div class="gov-card p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-2.5">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Secretary" class="w-16 h-16 rounded-full mx-auto border-2 border-slate-300 object-cover">
+      <div>
+        <h4 class="font-bold text-xs text-slate-900">Mrs. Ma. Elena Balleza</h4>
+        <p class="text-[11px] font-semibold text-emerald-700">Barangay Secretary</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Civil Registry & Clearances</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 7. EMERGENCY HOTLINES DIRECTORY -->
+<section id="hotlines-section" class="gov-card p-6 sm:p-8 rounded-3xl bg-white border-2 border-rose-200 shadow-sm space-y-5">
+  <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+    <div>
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+        <i class="fa-solid fa-phone-volume text-rose-600"></i>
+        <span>Emergency Hotlines Directory</span>
+      </h3>
+      <p class="text-xs text-slate-500 font-medium">Dumangas Municipality & Barangay Dacutan 24/7 Responders</p>
+    </div>
+    <span class="badge badge-red">24/7 Responders</span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+    <a href="tel:09985986241" class="p-4 rounded-2xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center gap-3.5 group">
+      <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold text-slate-900">Dumangas PNP Police Station</h5>
+        <p class="text-xs font-mono font-bold text-blue-700 mt-0.5">(033) 396-1211 / 0998-598-6241</p>
+      </div>
+    </a>
+
+    <a href="tel:09171234347" class="p-4 rounded-2xl bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-3.5 group">
+      <div class="w-11 h-11 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-fire-extinguisher"></i>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold text-slate-900">Bureau of Fire Protection (BFP)</h5>
+        <p class="text-xs font-mono font-bold text-rose-700 mt-0.5">(033) 396-1191 / 0917-123-4347</p>
+      </div>
+    </a>
+
+    <a href="tel:09209113862" class="p-4 rounded-2xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition-all flex items-center gap-3.5 group">
+      <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-truck-medical"></i>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold text-slate-900">MDRRMO Dumangas Rescue</h5>
+        <p class="text-xs font-mono font-bold text-amber-700 mt-0.5">(033) 396-1020 / 0920-911-3862</p>
+      </div>
+    </a>
+
+    <a href="tel:09178899123" class="p-4 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition-all flex items-center gap-3.5 group">
+      <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-walkie-talkie"></i>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold text-slate-900">Barangay Tanod & BHERT Desk</h5>
+        <p class="text-xs font-mono font-bold text-emerald-700 mt-0.5">0917-889-9123 / (033) 396-1024</p>
+      </div>
+    </a>
+
+    <a href="tel:0333961033" class="p-4 rounded-2xl bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 transition-all flex items-center gap-3.5 group">
+      <div class="w-11 h-11 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-hospital"></i>
+      </div>
+      <div>
+        <h5 class="text-xs font-bold text-slate-900">Dumangas Rural Health Unit</h5>
+        <p class="text-xs font-mono font-bold text-teal-700 mt-0.5">(033) 396-1033</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- APPLICATION SUCCESS MODAL -->
+<div id="publicDocSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm hidden">
+  <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 space-y-5 animate-pop-in text-center">
+    <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-2xl mx-auto">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-extrabold text-slate-900">Application Submitted Successfully!</h3>
+      <p class="text-xs text-slate-500 mt-1">Your document request has been queued for evaluation by the Barangay Secretary.</p>
+    </div>
+
+    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+      <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Your Application Tracking Reference</span>
+      <p class="text-xl font-extrabold font-mono text-emerald-700" id="generatedRefNumber">DAC-2026-0042</p>
+      <p class="text-[11px] text-slate-500">Please save this reference number to track status or present upon claiming.</p>
+    </div>
+
+    <div class="flex gap-2">
+      <button onclick="closePublicDocModal()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+        Close
+      </button>
+      <button onclick="viewApplicationInTracker()" class="w-full py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs transition-all">
+        Track Application
+      </button>
+    </div>
+  </div>
+</div>

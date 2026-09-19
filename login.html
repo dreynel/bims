@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIMS Dacutan - Official Administrative Sign In</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .login-gradient-bg {
+      background: linear-gradient(135deg, #091e17 0%, #0f172a 50%, #06281e 100%);
+    }
+    .gov-pattern {
+      background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- TOP BRANDING BAR (Mobile & Desktop) -->
+  <header class="w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 py-3 flex items-center justify-between z-20">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="assets/images/logo.svg" alt="Barangay Dacutan Seal" class="w-9 h-9 drop-shadow group-hover:scale-105 transition-transform">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900">BARANGAY DACUTAN</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">BIMS v2.4</span>
+        </div>
+        <p class="text-[10px] text-slate-500 font-medium">Municipality of Dumangas, Province of Iloilo • Region VI</p>
+      </div>
+    </a>
+
+    <a href="index.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all border border-slate-200">
+      <i class="fa-solid fa-arrow-left text-slate-500 text-xs"></i>
+      <span>Public Portal</span>
+    </a>
+  </header>
+
+  <!-- MAIN LOGIN CONTAINER -->
+  <div class="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-10">
+    <div class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200/90 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[620px]">
+
+      <!-- LEFT COLUMN: Government Showcase & Trust Banner (5 Cols on LG) -->
+      <div class="login-gradient-bg gov-pattern lg:col-span-5 p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
+        
+        <!-- Ambient Decorative Glow -->
+        <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Header Block -->
+        <div class="relative z-10 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-wide uppercase">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Authorized Officials Portal</span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-2.5 flex items-center justify-center shadow-lg">
+              <img src="assets/images/logo.svg" alt="Seal" class="w-full h-full object-contain">
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight pt-2">
+              Barangay Information Management System
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed">
+              Official administrative operations terminal for Barangay Dacutan, Dumangas, Iloilo. Providing secure governance, automated clearances, and resident services.
+            </p>
+          </div>
+
+          <!-- Feature Highlights -->
+          <div class="space-y-3.5 pt-4 border-t border-slate-700/60">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5 border border-emerald-500/30">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-100">Encrypted LGU Data Vault</p>
+                <p class="text-[11px] text-slate-400">Strictly compliant with Republic Act No. 10173 (Data Privacy Act).</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5 border border-emerald-500/30">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-100">Live Clearance & KP Blotter</p>
+                <p class="text-[11px] text-slate-400">Real-time status updates and instant certified document generation.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5 border border-emerald-500/30">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-100">Dacutan AI Copilot</p>
+                <p class="text-[11px] text-slate-400">Integrated assistant for ordinance lookups and administrative summaries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Trust Pill -->
+        <div class="relative z-10 pt-6 mt-6 border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Server: Dumangas LGU Cloud</span>
+          </div>
+          <span class="font-mono text-[10px] bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">SSL 256-Bit</span>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Authentication Form (7 Cols on LG) -->
+      <div class="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-white">
+        
+        <div>
+          <!-- Header Area -->
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Official Sign In</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">Authenticate your credentials to open the Administrative Dashboard.</p>
+            </div>
+            <div class="hidden sm:flex flex-col items-end">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                Secure Access
+              </span>
+            </div>
+          </div>
+
+          <!-- Role Selector Tabs -->
+          <div class="mb-6">
+            <label class="block text-xs font-bold text-slate-600 mb-2 uppercase tracking-wider">Select Administrative Role</label>
+            <div class="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200 text-xs font-semibold" id="roleSelector">
+              <button type="button" data-role="captain" class="role-btn active py-2.5 px-2 rounded-xl text-center transition-all bg-white text-emerald-800 font-bold shadow-sm border border-slate-200/80 flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                <i class="fa-solid fa-user-tie text-emerald-700"></i>
+                <span class="truncate">Captain</span>
+              </button>
+              <button type="button" data-role="secretary" class="role-btn py-2.5 px-2 rounded-xl text-center transition-all text-slate-600 hover:text-slate-900 flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                <i class="fa-solid fa-pen-nib text-slate-500"></i>
+                <span class="truncate">Secretary</span>
+              </button>
+              <button type="button" data-role="clerk" class="role-btn py-2.5 px-2 rounded-xl text-center transition-all text-slate-600 hover:text-slate-900 flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                <i class="fa-solid fa-id-badge text-slate-500"></i>
+                <span class="truncate">Clerk / Staff</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alert / Status Banner (Hidden by default) -->
+          <div id="loginAlert" class="hidden mb-5 p-3.5 rounded-xl text-xs font-medium flex items-center gap-3"></div>
+
+          <!-- Sign In Form -->
+          <form id="adminLoginForm" class="space-y-4" onsubmit="handleLoginSubmit(event)">
+            
+            <!-- Username / Official Email -->
+            <div>
+              <label for="loginUsername" class="block text-xs font-bold text-slate-700 mb-1.5">Official Username or Email</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i class="fa-solid fa-envelope text-sm"></i>
+                </div>
+                <input 
+                  type="text" 
+                  id="loginUsername" 
+                  name="username" 
+                  required
+                  autocomplete="username"
+                  value="captain.dacutan@dumangas.gov.ph"
+                  placeholder="name@dumangas.gov.ph or username" 
+                  class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder:text-slate-400">
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="loginPassword" class="block text-xs font-bold text-slate-700">Password</label>
+                <button type="button" onclick="showForgotPrompt()" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline">
+                  Forgot Password?
+                </button>
+              </div>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i class="fa-solid fa-lock text-sm"></i>
+                </div>
+                <input 
+                  type="password" 
+                  id="loginPassword" 
+                  name="password" 
+                  required
+                  autocomplete="current-password"
+                  value="dacutan2026"
+                  placeholder="Enter your official password" 
+                  class="w-full pl-10 pr-11 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder:text-slate-400">
+                <button 
+                  type="button" 
+                  id="togglePasswordBtn"
+                  aria-label="Toggle password visibility"
+                  onclick="togglePasswordVisibility()" 
+                  class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none">
+                  <i class="fa-solid fa-eye text-sm" id="togglePasswordIcon"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember Me & Security Mode -->
+            <div class="flex items-center justify-between pt-1">
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="rememberMe" checked class="w-4 h-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                <span class="text-xs text-slate-600 font-medium">Remember this workstation</span>
+              </label>
+              <span class="text-[11px] text-slate-400 flex items-center gap-1">
+                <i class="fa-solid fa-fingerprint text-emerald-600"></i>
+                2FA Enabled
+              </span>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              id="loginSubmitBtn"
+              class="w-full mt-2 py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] text-white font-bold text-sm shadow-lg shadow-emerald-700/20 flex items-center justify-center gap-2 transition-all">
+              <i class="fa-solid fa-right-to-bracket" id="submitIcon"></i>
+              <span id="submitText">Sign In & Open Dashboard</span>
+              <div id="submitSpinner" class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            </button>
+          </form>
+
+          <!-- QUICK DEMO LOGINS BAR -->
+          <div class="mt-6 pt-5 border-t border-slate-200/80">
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center justify-between">
+              <span>Quick 1-Click Demo Logins:</span>
+              <span class="text-emerald-700 font-semibold normal-case">Pre-configured testing</span>
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <button 
+                type="button" 
+                onclick="quickLogin('captain')" 
+                class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 text-left transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-800">Hon. Roberto Dacutan</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Captain</span>
+                </div>
+                <p class="text-[10px] text-slate-500 mt-0.5">Full Executive & Blotter Access</p>
+              </button>
+
+              <button 
+                type="button" 
+                onclick="quickLogin('secretary')" 
+                class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition-all group">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-slate-800 group-hover:text-blue-800">Elena M. Fernandez</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Secretary</span>
+                </div>
+                <p class="text-[10px] text-slate-500 mt-0.5">Records & Clearances Issuance</p>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance & Public Site Return Footer -->
+        <div class="pt-6 mt-6 border-t border-slate-200 text-center space-y-2">
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-1"></i>
+            Notice: Unauthorized access to this terminal is punishable under the Cybercrime Prevention Act (RA 10175) and Data Privacy Act (RA 10173).
+          </p>
+          <div>
+            <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-emerald-700 transition-colors">
+              <i class="fa-solid fa-arrow-left text-[11px]"></i>
+              <span>Return to Public Citizen Portal (Barangay Dacutan)</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="loginToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 max-w-md">
+      <div id="toastIconContainer" class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+        <i class="fa-solid fa-check" id="toastIcon"></i>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-white" id="toastTitle">Notification</p>
+        <p class="text-[11px] text-slate-300" id="toastMessage">Message content</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION SCRIPT -->
+  <script>
+    // Demo User Data
+    const DEMO_USERS = {
+      captain: {
+        name: "Hon. Roberto Dacutan",
+        role: "Punong Barangay",
+        email: "captain.dacutan@dumangas.gov.ph",
+        pass: "dacutan2026",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80"
+      },
+      secretary: {
+        name: "Elena M. Fernandez",
+        role: "Barangay Secretary",
+        email: "sec.fernandez@dumangas.gov.ph",
+        pass: "sec2026",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+      },
+      clerk: {
+        name: "Mark J. Villavicencio",
+        role: "Administrative Clerk",
+        email: "clerk.mark@dumangas.gov.ph",
+        pass: "clerk2026",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+      }
+    };
+
+    let selectedRole = 'captain';
+
+    // Role Tab Switching
+    document.querySelectorAll('.role-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.role-btn').forEach(b => {
+          b.classList.remove('active', 'bg-white', 'text-emerald-800', 'font-bold', 'shadow-sm', 'border', 'border-slate-200/80');
+          b.classList.add('text-slate-600');
+        });
+        btn.classList.add('active', 'bg-white', 'text-emerald-800', 'font-bold', 'shadow-sm', 'border', 'border-slate-200/80');
+        btn.classList.remove('text-slate-600');
+        
+        selectedRole = btn.dataset.role;
+        const user = DEMO_USERS[selectedRole];
+        if (user) {
+          document.getElementById('loginUsername').value = user.email;
+          document.getElementById('loginPassword').value = user.pass;
+        }
+      });
+    });
+
+    // Toggle Password Visibility
+    function togglePasswordVisibility() {
+      const passInput = document.getElementById('loginPassword');
+      const icon = document.getElementById('togglePasswordIcon');
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Quick 1-Click Login Helper
+    function quickLogin(roleKey) {
+      const user = DEMO_USERS[roleKey];
+      if (!user) return;
+
+      // Select role tab
+      const tab = document.querySelector(`[data-role="${roleKey}"]`);
+      if (tab) tab.click();
+
+      // Pre-fill inputs
+      document.getElementById('loginUsername').value = user.email;
+      document.getElementById('loginPassword').value = user.pass;
+
+      // Trigger submit
+      performLogin(user);
+    }
+
+    // Form Submit Handler
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      if (!username || !password) {
+        showLoginAlert("Please enter both your official email/username and password.", "error");
+        return;
+      }
+
+      // Check against current demo users or accept valid format
+      const matchedUser = Object.values(DEMO_USERS).find(u => u.email.toLowerCase() === username.toLowerCase()) 
+                          || DEMO_USERS[selectedRole];
+
+      performLogin(matchedUser);
+    }
+
+    // Perform Login Simulation
+    function performLogin(user) {
+      const btn = document.getElementById('loginSubmitBtn');
+      const icon = document.getElementById('submitIcon');
+      const text = document.getElementById('submitText');
+      const spinner = document.getElementById('submitSpinner');
+
+      // Set Loading State
+      btn.disabled = true;
+      icon.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      text.textContent = "Verifying Credentials...";
+
+      setTimeout(() => {
+        // Save auth session in sessionStorage
+        const authData = {
+          authenticated: true,
+          timestamp: new Date().toISOString(),
+          user: user
+        };
+        sessionStorage.setItem('bims_authenticated', 'true');
+        sessionStorage.setItem('bims_user', JSON.stringify(user));
+
+        showToast("Authentication Successful", `Welcome, ${user.name} (${user.role}). Redirecting to Dashboard...`, "success");
+
+        // Redirect to admin dashboard
+        setTimeout(() => {
+          window.location.href = "admin.html#/dashboard";
+        }, 900);
+      }, 600);
+    }
+
+    // Forgot password alert prompt
+    function showForgotPrompt() {
+      showToast(
+        "Credential Recovery", 
+        "For password resets, please contact the Barangay Secretary or IT Administrator at the Barangay Hall.", 
+        "info"
+      );
+    }
+
+    // In-page alert banner
+    function showLoginAlert(msg, type) {
+      const alert = document.getElementById('loginAlert');
+      alert.classList.remove('hidden', 'bg-rose-50', 'text-rose-800', 'border', 'border-rose-200', 'bg-emerald-50', 'text-emerald-800');
+      
+      if (type === 'error') {
+        alert.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+        alert.innerHTML = `<i class="fa-solid fa-circle-exclamation text-rose-600 text-sm"></i><span>${msg}</span>`;
+      }
+    }
+
+    // Toast Notification helper
+    function showToast(title, msg, type = 'info') {
+      const toast = document.getElementById('loginToast');
+      const titleEl = document.getElementById('toastTitle');
+      const msgEl = document.getElementById('toastMessage');
+      const iconContainer = document.getElementById('toastIconContainer');
+      const icon = document.getElementById('toastIcon');
+
+      titleEl.textContent = title;
+      msgEl.textContent = msg;
+
+      if (type === 'success') {
+        iconContainer.className = "w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0";
+        icon.className = "fa-solid fa-check";
+      } else {
+        iconContainer.className = "w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0";
+        icon.className = "fa-solid fa-info";
+      }
+
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 4000);
+    }
+
+    // Check if already authenticated
+    window.addEventListener('DOMContentLoaded', () => {
+      const isAuth = sessionStorage.getItem('bims_authenticated');
+      if (isAuth === 'true') {
+        // Option to continue directly
+        const storedUser = JSON.parse(sessionStorage.getItem('bims_user') || '{}');
+        if (storedUser && storedUser.name) {
+          showLoginAlert(`You are already signed in as ${storedUser.name} (${storedUser.role}). <a href="admin.html#/dashboard" class="font-bold underline ml-1">Open Dashboard →</a>`, 'info');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
