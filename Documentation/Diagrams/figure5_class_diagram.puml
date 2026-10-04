@@ -1,0 +1,124 @@
+@startuml
+
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam roundCorner 4
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+
+
+skinparam class {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.4
+    FontColor #000000
+    FontSize 11
+    AttributeFontSize 10
+    HeaderBackgroundColor #FFFFFF
+}
+
+class BlotterRecord {
+    + id : bigint [PK]
+    --
+    + blotter_no : varchar(30) [UK]
+    + complainant_name : varchar(255)
+    + respondent_name : varchar(255)
+    + incident_type : varchar(100)
+    + incident_location : varchar(255)
+    + incident_date : datetime
+    + status : enum('in_mediation','settled','dismissed')
+    + hearing_date : datetime
+    + narrative : text
+    + created_by : bigint [FK]
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class User {
+    + id : bigint [PK]
+    --
+    + name : varchar(255)
+    + email : varchar(255) [UK]
+    + role : enum('captain', 'secretary')
+    + password : varchar(255)
+    + created_at : timestamp
+    + updated_at : timestamp
+    --
+    + evaluateCertificate()
+    + approveCertificate()
+}
+
+class Certificate {
+    + id : bigint [PK]
+    --
+    + reference_no : varchar(20) [UK]
+    + resident_id : bigint [FK]
+    + doc_type : varchar(100)
+    + purpose : text
+    + email : varchar(255)
+    + status : enum('submitted','evaluated','approved','released','rejected')
+    + or_number : varchar(50)
+    + ctc_number : varchar(50)
+    + fee : decimal(10,2)
+    + evaluated_by : bigint [FK]
+    + approved_by : bigint [FK]
+    + remarks : text
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Resident {
+    + id : bigint [PK]
+    --
+    + first_name : varchar(100)
+    + middle_name : varchar(100)
+    + last_name : varchar(100)
+    + birth_date : date
+    + civil_status : enum
+    + gender : enum('Male', 'Female')
+    + purok : varchar(50)
+    + contact_number : varchar(20)
+    + is_voter : boolean
+    + is_senior : boolean
+    + is_pwd : boolean
+    + is_indigent : boolean
+    + is_4ps : boolean
+    + is_solo_parent : boolean
+    + created_at : timestamp
+    + updated_at : timestamp
+    --
+    + getFullNameAttribute()
+}
+
+class AidRecipient {
+    + id : bigint [PK]
+    --
+    + aid_distribution_id : bigint [FK]
+    + resident_id : bigint [FK]
+    + quantity : int
+    + status : enum('claimed','pending')
+    + received_at : timestamp
+}
+
+class AidDistribution {
+    + id : bigint [PK]
+    --
+    + batch_name : varchar(255)
+    + aid_type : varchar(100)
+    + date_distributed : date
+    + notes : text
+    + created_by : bigint [FK]
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+User "1" -left-> "0..*" BlotterRecord : encodes >
+User "1" -down-> "0..*" Certificate : processes >
+Resident "1" -down-> "0..*" Certificate : requests >
+Resident "1" -right-> "0..*" AidRecipient : receives >
+AidDistribution "1" -down-> "1..*" AidRecipient : contains >
+User "1" -down-> "0..*" AidDistribution : creates >
+
+@enduml

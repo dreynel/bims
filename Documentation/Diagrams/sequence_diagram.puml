@@ -1,0 +1,67 @@
+@startuml
+skinparam dpi 200
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam roundCorner 6
+
+skinparam sequence {
+    ArrowColor #2B6CB0
+    ArrowThickness 1.2
+    ActorBorderColor #2B6CB0
+    ActorBackgroundColor #EBF8FF
+    ParticipantBorderColor #3182CE
+    ParticipantBackgroundColor #FFFFFF
+    ParticipantFontSize 12
+    ParticipantFontColor #1A202C
+    LifeLineBorderColor #CBD5E0
+    LifeLineBackgroundColor #EDF2F7
+}
+
+skinparam alt {
+    BackgroundColor #F7FAFC
+    BorderColor #A0AEC0
+    FontColor #2D3748
+}
+
+actor "Resident / Citizen" as Resident
+boundary "Web Browser\n(Public Portal)" as Browser
+control "Laravel Router\n(web.php)" as Router
+control "PublicPortalController" as Controller
+entity "Certificate Model" as Model
+database "MySQL 8.0 Database" as DB
+
+Resident -> Browser: 1. Enter 8-character Tracking Code\n(e.g., CERT-A1B2C3D4) and click "Track"
+activate Browser
+
+Browser -> Router: 2. GET /track?reference_no=CERT-A1B2C3D4
+activate Router
+
+Router -> Controller: 3. Invoke track(Request $request)
+activate Controller
+
+Controller -> Model: 4. where('reference_no', $code)->first()
+activate Model
+
+Model -> DB: 5. SELECT * FROM certificates\nWHERE reference_no = 'CERT-A1B2C3D4' LIMIT 1
+activate DB
+
+DB --> Model: 6. Return certificate record row
+deactivate DB
+
+Model --> Controller: 7. Return $certificate model instance
+deactivate Model
+
+alt Certificate Record Found
+    Controller -> Controller: 8. Map lifecycle state\n(Submitted -> Evaluated -> Approved -> Ready for Release)
+    Controller --> Browser: 9. HTTP 200 OK (Render Tracking View with Stepper & Timestamps)
+    Browser --> Resident: 10. Display 4-Stage Progress Visualizer,\nStatus Badge, Processing Dates & Pickup Advice
+else Certificate Record Not Found / Invalid Code
+    Controller --> Browser: 11. HTTP 404 / Redirect with flash('error', 'Tracking code not found')
+    Browser --> Resident: 12. Display Alert: "Reference code not found.\nPlease verify your tracking number."
+end
+
+deactivate Controller
+deactivate Router
+deactivate Browser
+
+@enduml

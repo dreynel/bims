@@ -1,0 +1,34 @@
+@startuml
+
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam roundCorner 4
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.5
+    FontColor #000000
+    FontSize 11
+}
+
+rectangle "**INPUT**\n\n**Resident Information**\n• Full Name, Birthday, Gender, Civil Status\n• Residence Address & Purok Mapping\n• Sector Flags (Senior, PWD, 4Ps, Indigent)\n\n**Document Request Information**\n• 12 Clearance & Certificate Types\n• Purpose of Request & Requirements\n• Citizen Contact Email Address\n\n**Barangay Operations Data**\n• Blotter Incidents & Lupon Hearings\n• Calamity & SAP Aid Distributions\n• Official Receipt (OR) & CTC Numbers\n\n**Administrative Data**\n• Staff Credentials & Access Roles" as Input
+
+rectangle "**PROCESS**\n\n**Phase 1: Planning & Analysis**\n• Needs Assessment in Brgy Dacutan\n• Frontline Service Workflow Analysis\n• Hardware & Software Specification\n\n**Phase 2: Prototyping & Development**\n• Full-Stack Web App (Laravel 12 & MySQL)\n• 24/7 Citizen Web Portal & Requesting\n• 2-Tier Approval Hierarchy\n  (Secretary Review & Captain Approval)\n• Automated SMTP Email Notifications\n• Dual-Seal Standard A4 Clearance Generator\n\n**Phase 3: Testing & Evaluation**\n• Component & Integration Testing\n• ISO 25010 Quality Evaluation" as Process
+
+rectangle "**OUTPUT**\n\n**Barangay Information and**\n**Management System (BIMS)**\n**for Barangay Dacutan, Dumangas**\n\n• 24/7 Public Citizen Web Portal\n• 12 Online Document Offerings\n• 4-Stage Real-Time Request Tracker\n• Automated Status Email Notifications\n• 2-Tier Clearance Approval Hierarchy\n• Centralized Resident Census Profiling\n• Blotter & Lupon Case Management\n• Calamity & SAP Relief Distribution\n• Authentic Republic Standard A4 Clearances" as Output
+
+rectangle "**FEEDBACK & CONTINUOUS EVALUATION**\nISO 25010 Software Quality Evaluation & Frontline Community User Feedback" as Feedback
+
+Input -right-> Process : " System Processing\n & Data Flow "
+Process -right-> Output : " System Deliverables\n & Deployment "
+
+Output -down-> Feedback
+Feedback -left-> Input
+
+@enduml

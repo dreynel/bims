@@ -1,0 +1,76 @@
+@startuml
+
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam roundCorner 4
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+
+skinparam sequence {
+    ArrowColor #000000
+    ArrowThickness 1.3
+    ActorBorderColor #000000
+    ActorBorderThickness 1.5
+    ActorBackgroundColor #FFFFFF
+    ParticipantBorderColor #000000
+    ParticipantBorderThickness 1.5
+    ParticipantBackgroundColor #FFFFFF
+    ParticipantFontSize 11
+    ParticipantFontColor #000000
+    LifeLineBorderColor #000000
+    LifeLineBorderThickness 1.2
+    LifeLineBackgroundColor #FFFFFF
+}
+
+skinparam alt {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.5
+    FontColor #000000
+    FontSize 11
+}
+
+actor "Resident / Citizen" as Resident
+boundary "Web Browser\n(Public Portal)" as Browser
+control "Laravel Router\n(web.php)" as Router
+control "PublicPortalController" as Controller
+entity "Certificate Model" as Model
+database "MySQL 8.0 Database" as DB
+
+Resident -> Browser: 1. Enter 8-character Tracking Code\n(e.g., CERT-A1B2C3D4) and click "Track"
+activate Browser
+
+Browser -> Router: 2. GET /track?reference_no=CERT-A1B2C3D4
+activate Router
+
+Router -> Controller: 3. Invoke track(Request $request)
+activate Controller
+
+Controller -> Model: 4. where('reference_no', $code)->first()
+activate Model
+
+Model -> DB: 5. SELECT * FROM certificates\nWHERE reference_no = 'CERT-A1B2C3D4' LIMIT 1
+activate DB
+
+DB --> Model: 6. Return certificate record row
+deactivate DB
+
+Model --> Controller: 7. Return $certificate model instance
+deactivate Model
+
+alt Certificate Record Found
+    Controller -> Controller: 8. Determine current lifecycle status\n(Submitted -> Evaluated -> Approved -> Ready for Release)
+    Controller --> Browser: 9. HTTP 200 OK (Render Tracking View with Stepper & Timestamps)
+    Browser --> Resident: 10. Display 4-Stage Progress Visualizer,\nStatus Badge, Processing Dates & Pickup Advice
+else Certificate Record Not Found / Invalid Code
+    Controller --> Browser: 11. HTTP 404 / Redirect with flash('error', 'Tracking code not found')
+    Browser --> Resident: 12. Display Alert: "Reference code not found.\nPlease verify your tracking number."
+end
+
+deactivate Controller
+deactivate Router
+deactivate Browser
+
+@enduml

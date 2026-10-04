@@ -1,0 +1,90 @@
+@startuml
+skinparam dpi 200
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+skinparam actor {
+    BackgroundColor #EBF8FF
+    BorderColor #2B6CB0
+    FontColor #1A202C
+    FontSize 13
+}
+
+skinparam usecase {
+    BackgroundColor #FFFFFF
+    BorderColor #3182CE
+    FontColor #2D3748
+    FontSize 12
+    ArrowColor #2B6CB0
+    ArrowThickness 1.2
+}
+
+skinparam rectangle {
+    BackgroundColor #F7FAFC
+    BorderColor #CBD5E0
+    FontColor #2D3748
+    FontSize 13
+    FontStyle bold
+}
+
+left to right direction
+
+actor "Resident\n(General Public)" as Resident
+actor "Barangay Secretary\n(Administrative & Clerical)" as Secretary
+actor "Punong Barangay\n(Barangay Captain)" as Captain
+
+rectangle "Barangay Information and Management System (BIMS)" {
+    package "Citizen Services" {
+        usecase "View Announcements & Directory" as UC_ViewInfo
+        usecase "Apply Online for 12 Document Types" as UC_ApplyDoc
+        usecase "Track Request Status (Tracking Code)" as UC_Track
+        usecase "Receive Email Status Notifications" as UC_EmailNotif
+    }
+
+    package "Administrative & Clerical Operations" {
+        usecase "Manage Resident Census & Sector Profiles" as UC_Profiling
+        usecase "Evaluate Document Applications (Tier 1)" as UC_EvalDoc
+        usecase "Manage Blotter Records & Lupon Hearings" as UC_Blotter
+        usecase "Log Calamity & Aid Distributions" as UC_Aid
+        usecase "Record Payment Details (OR & CTC)" as UC_RecordOR
+        usecase "Generate & Print Official A4 Clearances" as UC_PrintDoc
+    }
+
+    package "Executive Governance" {
+        usecase "View Executive Analytics Dashboard" as UC_ExecDash
+        usecase "Approve Applications (Tier 2 Authorization)" as UC_ApproveDoc
+        usecase "Oversee Lupon Dispute Settlements" as UC_LuponOversight
+        usecase "Sign Official Certifications" as UC_SignDoc
+    }
+}
+
+' Resident
+Resident --> UC_ViewInfo
+Resident --> UC_ApplyDoc
+Resident --> UC_Track
+Resident --> UC_EmailNotif
+
+UC_ApplyDoc ..> UC_Track : <<triggers>>
+UC_ApplyDoc ..> UC_EmailNotif : <<triggers>>
+
+' Secretary
+Secretary --> UC_Profiling
+Secretary --> UC_EvalDoc
+Secretary --> UC_Blotter
+Secretary --> UC_Aid
+Secretary --> UC_RecordOR
+Secretary --> UC_PrintDoc
+
+' Captain
+Captain --> UC_ExecDash
+Captain --> UC_ApproveDoc
+Captain --> UC_LuponOversight
+Captain --> UC_SignDoc
+
+' Cross-stage dependencies
+UC_EvalDoc ..> UC_ApproveDoc : <<submits to>>
+UC_ApproveDoc ..> UC_PrintDoc : <<authorizes>>
+UC_RecordOR ..> UC_PrintDoc : <<precedes>>
+
+@enduml

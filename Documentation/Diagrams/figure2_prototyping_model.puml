@@ -1,0 +1,34 @@
+@startuml
+
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam roundCorner 4
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.5
+    FontColor #000000
+    FontSize 11
+    FontStyle bold
+}
+
+rectangle "1. Requirements\nGathering & Analysis" as Step1
+rectangle "2. Quick Design &\nSystem Architecture" as Step2
+rectangle "3. Prototype\nDevelopment (BIMS)" as Step3
+rectangle "4. End-User\nDemonstration & Evaluation" as Step4
+rectangle "5. Prototype Refinement\n& Optimization" as Step5
+rectangle "6. System Testing &\nLive Cloud Deployment" as Step6
+
+Step1 -down-> Step2 : " Define User\n Requirements "
+Step2 -down-> Step3 : " System & Database\n Blueprints "
+Step3 -right-> Step4 : " Working Prototype\n Demonstrations "
+Step4 -up-> Step5 : " User Evaluation\n & Feedback "
+Step5 -left-> Step3 : " Code Refinement\n & Adjustments "
+Step4 -down-> Step6 : " Requirements Fully Satisfied\n & Final Acceptance "
+
+@enduml

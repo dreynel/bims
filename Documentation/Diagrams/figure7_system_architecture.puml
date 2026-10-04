@@ -1,0 +1,81 @@
+@startuml
+
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam roundCorner 4
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+
+
+skinparam node {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.4
+    FontColor #000000
+    FontSize 11
+    FontStyle bold
+}
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.3
+    FontColor #000000
+    FontSize 10
+}
+
+skinparam cloud {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.4
+    FontColor #000000
+    FontSize 11
+    FontStyle bold
+}
+
+skinparam database {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.4
+    FontColor #000000
+    FontSize 11
+    FontStyle bold
+}
+
+rectangle "1. PRESENTATION / CLIENT TIER" as ClientTier {
+    node "Public Citizen Access" as CitizenDev {
+        rectangle "Responsive Web Browser\n• Mobile Phones (Android / iOS)\n• Laptops & Personal Computers" as CitizenApp
+    }
+    
+    node "Barangay Hall Workstations" as AdminDev {
+        rectangle "Administrative Terminals\n• Secretary Desktop PC\n• Punong Barangay Office Terminal\n• Network Laser Printer" as AdminApp
+    }
+}
+
+cloud "2. NETWORK & SECURITY TIER" as Internet {
+    rectangle "Public Internet & Secure HTTPS Protocol (Port 443)\n256-bit SSL / TLS Certificate Data Encryption" as SecurityLayer
+}
+
+node "3. APPLICATION & SERVICE TIER (LIVE CLOUD HOSTING)" as CloudServer {
+    rectangle "Web Server Stack\n• Linux OS (Ubuntu 22.04 LTS)\n• Nginx / Apache HTTP Engine\n• PHP 8.2+ FastCGI" as WebServer
+    
+    rectangle "Laravel 12 Backend Application\n• HTTP Routing & Authentication Middleware\n• Eloquent ORM & Relational Business Logic\n• Blade Templates & Responsive UI" as AppLayer
+    
+    rectangle "Automated Mailer Service\n• SMTP Protocol Integration\n• Real-Time Notification Dispatcher" as MailService
+}
+
+node "4. DATA STORAGE TIER" as DBTier {
+    database "MySQL 8.0 Relational DBMS" as MySQL {
+        rectangle "Relational Database Tables\n• residents (demographic & census data)\n• certificates (12 document types & tracking)\n• blotter_records (dispute & mediation logs)\n• aid_distributions (relief & SAP distributions)\n• users (role-based staff credentials)" as Tables
+    }
+}
+
+ClientTier -down-> Internet : " Encrypted HTTPS Traffic (Port 443) "
+Internet -down-> WebServer : " Secure Web Requests "
+WebServer -right-> AppLayer : " FastCGI / PHP "
+AppLayer -right-> MailService : " Dispatch Status Emails "
+AppLayer -down-> MySQL : " SQL Queries & Record Sets "
+
+@enduml

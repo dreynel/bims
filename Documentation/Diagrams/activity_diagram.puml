@@ -1,0 +1,99 @@
+@startuml
+skinparam dpi 200
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam roundCorner 8
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #3182CE
+    FontColor #2D3748
+    FontSize 12
+    ArrowColor #2B6CB0
+    ArrowThickness 1.2
+}
+
+skinparam partition {
+    BackgroundColor #F7FAFC
+    BorderColor #A0AEC0
+    FontColor #1A202C
+    FontSize 13
+    FontStyle bold
+}
+
+skinparam condition {
+    BackgroundColor #FEFCBF
+    BorderColor #D69E2E
+    FontColor #744210
+    FontSize 11
+}
+
+|Resident / Citizen|
+start
+:Access Public Citizen Portal online;
+:Select document type from 12 offerings\nand complete online application form;
+:Provide valid email address and specify purpose;
+:Submit document request online;
+
+|BIMS Web Application & Mailer|
+:Validate input fields;
+:Generate unique 8-character tracking reference code;
+:Save application with status "Submitted";
+:Send automated Submission Confirmation Email\nwith tracking reference code to citizen;
+
+|Barangay Secretary (Clerk)|
+:Log in to Administrative Dashboard;
+:Open Pending Clearance queue;
+:Inspect applicant details against\nResident Census Profiles and Blotter Records;
+
+if (Applicant record valid & complete?) then (no)
+    :Reject application with reason remarks;
+    |BIMS Web Application & Mailer|
+    :Update status to "Rejected";
+    :Send Rejection Notice email to citizen;
+    |Resident / Citizen|
+    :Receive rejection email notification;
+    stop
+else (yes)
+    |Barangay Secretary (Clerk)|
+    :Endorse application as "Evaluated" (Tier 1 completed);
+    |BIMS Web Application & Mailer|
+    :Update document status to "Evaluated";
+    :Send automated Secretary Evaluation Notice email;
+endif
+
+|Punong Barangay (Captain)|
+:Access Executive Dashboard;
+:Review application in Evaluated Queue;
+
+if (Grant Executive Approval?) then (no)
+    :Disapprove or request document revision;
+    |BIMS Web Application & Mailer|
+    :Update status and send notification email;
+    |Resident / Citizen|
+    :Receive notification email;
+    stop
+else (yes)
+    |Punong Barangay (Captain)|
+    :Authorize final executive approval (Tier 2 completed);
+    |BIMS Web Application & Mailer|
+    :Update document status to "Approved";
+    :Send automated Captain Approval Notice email;
+endif
+
+|Barangay Secretary (Clerk)|
+:Input Official Receipt (OR) and\nCommunity Tax Certificate (CTC) numbers;
+:Print official Republic standard A4 clearance\nwith municipal and barangay seals;
+:Update document status to "Ready for Release";
+
+|BIMS Web Application & Mailer|
+:Send automated Pickup Notice email with\nclaiming instructions and fee details;
+
+|Resident / Citizen|
+:Receive Ready for Pickup email;
+:Visit Barangay Hall;
+:Present identification and pay fee in cash;
+:Claim signed official A4 clearance;
+stop
+
+@enduml
