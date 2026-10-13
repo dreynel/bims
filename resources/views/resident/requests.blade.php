@@ -259,29 +259,16 @@
                 <span>Review Details</span>
               </button>
 
-              <!-- Print Claim Stub -->
+              <!-- Print Appointment & Claim Stub -->
               <a 
                 href="{{ route('resident.requests.claim-stub', $cert->id) }}" 
                 target="_blank" 
-                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1.5"
-                title="Print claim stub for walk-in pickup"
+                class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all flex items-center gap-1.5"
+                title="Print appointment & claim stub for walk-in pickup at Window 1"
               >
-                <i class="fa-solid fa-receipt"></i>
-                <span class="hidden md:inline">Claim Stub</span>
+                <i class="fa-solid fa-ticket"></i>
+                <span>Appointment Claim Stub</span>
               </a>
-
-              <!-- View / Print Certificate (If Approved) -->
-              @if(in_array($cert->status, ['Approved', 'Ready for Release', 'Claimed']))
-                <a 
-                  href="{{ route('resident.certificates.print', $cert->id) }}" 
-                  target="_blank" 
-                  class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all flex items-center gap-1.5"
-                  title="View and print official A4 certificate"
-                >
-                  <i class="fa-solid fa-print"></i>
-                  <span>View Certificate</span>
-                </a>
-              @endif
 
               <!-- Cancel Button (If Pending) -->
               @if($cert->status === 'Pending')

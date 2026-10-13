@@ -63,7 +63,7 @@ node "3. APPLICATION & SERVICE TIER (LIVE CLOUD HOSTING)" as CloudServer {
     
     rectangle "Laravel 12 Backend Application\n• HTTP Routing & Authentication Middleware\n• Eloquent ORM & Relational Business Logic\n• Blade Templates & Responsive UI" as AppLayer
     
-    rectangle "Automated Mailer Service\n• SMTP Protocol Integration\n• Real-Time Notification Dispatcher" as MailService
+    rectangle "Messaging & Notification Services\n• Automated Email & OTP Dispatcher Service\n• SMTP Protocol Integration (4-Digit Email OTP)" as MailService
 }
 
 node "4. DATA STORAGE TIER" as DBTier {
@@ -75,7 +75,7 @@ node "4. DATA STORAGE TIER" as DBTier {
 ClientTier -down-> Internet : " Encrypted HTTPS Traffic (Port 443) "
 Internet -down-> WebServer : " Secure Web Requests "
 WebServer -right-> AppLayer : " FastCGI / PHP "
-AppLayer -right-> MailService : " Dispatch Status Emails "
+AppLayer -right-> MailService : " Dispatch OTPs & Status Emails "
 AppLayer -down-> MySQL : " SQL Queries & Record Sets "
 
 @enduml

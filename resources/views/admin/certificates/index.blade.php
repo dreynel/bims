@@ -52,24 +52,32 @@
           onchange="this.form.submit()" 
           class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="All">All Document Types (12 Offerings)</option>
-          <optgroup label="── Personal Certificates & Clearances ──">
-            <option value="Barangay Clearance" {{ request('type') == 'Barangay Clearance' ? 'selected' : '' }}>Barangay Clearance / Certificate</option>
-            <option value="Certificate of Residency" {{ request('type') == 'Certificate of Residency' ? 'selected' : '' }}>Certificate of Residency</option>
-            <option value="Certificate of Indigency" {{ request('type') == 'Certificate of Indigency' ? 'selected' : '' }}>Certificate of Indigency</option>
-            <option value="Certificate of Good Moral Character" {{ request('type') == 'Certificate of Good Moral Character' ? 'selected' : '' }}>Certificate of Good Moral Character</option>
-            <option value="First Time Job Seeker (RA 11261)" {{ request('type') == 'First Time Job Seeker (RA 11261)' || request('type') == 'First-Time Jobseeker Certification (RA 11261)' ? 'selected' : '' }}>First Time Job Seeker (RA 11261)</option>
-            <option value="Barangay ID" {{ request('type') == 'Barangay ID' ? 'selected' : '' }}>Barangay ID</option>
-            <option value="Solo Parent Barangay Certification" {{ request('type') == 'Solo Parent Barangay Certification' ? 'selected' : '' }}>Solo Parent Barangay Certification</option>
+          <option value="All">All Document Types (Ordinance No. 2020-01)</option>
+          <optgroup label="── Sec. 3.A Barangay Clearances ──">
+            <option value="Barangay Clearance" {{ request('type') == 'Barangay Clearance' ? 'selected' : '' }}>Barangay Clearance (₱30.00)</option>
+            <option value="Certificate of Residency" {{ request('type') == 'Certificate of Residency' ? 'selected' : '' }}>Certificate of Residency (₱30.00)</option>
+            <option value="Certificate of Good Moral Character" {{ request('type') == 'Certificate of Good Moral Character' ? 'selected' : '' }}>Certificate of Good Moral Character (₱30.00)</option>
+            <option value="Certificate of Indigency" {{ request('type') == 'Certificate of Indigency' ? 'selected' : '' }}>Certificate of Indigency (Sec. 5 Free)</option>
           </optgroup>
-          <optgroup label="── Business & Property Clearances ──">
-            <option value="Barangay Business Clearance" {{ request('type') == 'Barangay Business Clearance' || request('type') == 'Barangay Business Clearance / Permit' ? 'selected' : '' }}>Barangay Business Clearance / Permit</option>
-            <option value="Barangay Building / Construction Clearance" {{ request('type') == 'Barangay Building / Construction Clearance' ? 'selected' : '' }}>Barangay Building / Construction Clearance</option>
-            <option value="Certificate of No Objection (CNO)" {{ request('type') == 'Certificate of No Objection (CNO)' ? 'selected' : '' }}>Certificate of No Objection (CNO)</option>
+          <optgroup label="── 12 Official Barangay Dacutan Certifications ──">
+            <option value="Certification for Delayed Registration" {{ request('type') == 'Certification for Delayed Registration' ? 'selected' : '' }}>1. Certification for Delayed Registration (₱30.00)</option>
+            <option value="Certification for PWD" {{ request('type') == 'Certification for PWD' ? 'selected' : '' }}>2. Certification for PWD (Sec. 5 Free)</option>
+            <option value="Certification for Solo Parent" {{ request('type') == 'Certification for Solo Parent' || request('type') == 'Solo Parent Barangay Certification' ? 'selected' : '' }}>3. Certification for Solo Parent (Free)</option>
+            <option value="Certification for Loan" {{ request('type') == 'Certification for Loan' ? 'selected' : '' }}>4. Certification for Loan (₱50.00)</option>
+            <option value="Certification for ILECO (Electrification)" {{ request('type') == 'Certification for ILECO (Electrification)' ? 'selected' : '' }}>5. Certification for ILECO / Electrification (₱30.00)</option>
+            <option value="Certification for Live-In" {{ request('type') == 'Certification for Live-In' ? 'selected' : '' }}>6. Certification for Live-In (₱30.00)</option>
+            <option value="Certification for Deceased / House" {{ request('type') == 'Certification for Deceased / House' ? 'selected' : '' }}>7. Certification for Deceased / House (₱30.00)</option>
+            <option value="Certification for First Time Job Seeker" {{ request('type') == 'Certification for First Time Job Seeker' || request('type') == 'First Time Job Seeker (RA 11261)' ? 'selected' : '' }}>8. Certification for First Time Job Seeker (RA 11261 Free)</option>
+            <option value="Certification for RSBSA Member" {{ request('type') == 'Certification for RSBSA Member' ? 'selected' : '' }}>9. Certification for RSBSA Member (₱30.00)</option>
+            <option value="Certification for TIN ID" {{ request('type') == 'Certification for TIN ID' ? 'selected' : '' }}>10. Certification for TIN ID (₱30.00)</option>
+            <option value="Certification for Building Permit" {{ request('type') == 'Certification for Building Permit' || request('type') == 'Barangay Building / Construction Clearance' ? 'selected' : '' }}>11. Certification for Building Permit (₱200.00)</option>
+            <option value="Certification for Electrical Permit" {{ request('type') == 'Certification for Electrical Permit' ? 'selected' : '' }}>12. Certification for Electrical Permit (₱30.00)</option>
           </optgroup>
-          <optgroup label="── Legal & Dispute Records ──">
-            <option value="Barangay Blotter Certification" {{ request('type') == 'Barangay Blotter Certification' ? 'selected' : '' }}>Barangay Blotter Certification</option>
-            <option value="Certification to File Action" {{ request('type') == 'Certification to File Action' ? 'selected' : '' }}>Certification to File Action (CFA)</option>
+          <optgroup label="── Sec. 3.B Business, Sec. 3.C Aquatic & Sec. 8 Legal ──">
+            <option value="Barangay Business Clearance" {{ request('type') == 'Barangay Business Clearance' || request('type') == 'Barangay Business Clearance / Permit' ? 'selected' : '' }}>Barangay Business Clearance / Permit (₱30–₱300)</option>
+            <option value="Aquatic Resources / Fisherfolk Clearance" {{ request('type') == 'Aquatic Resources / Fisherfolk Clearance' ? 'selected' : '' }}>Aquatic Resources / Fisherfolk Clearance (₱100.00)</option>
+            <option value="Barangay Blotter Certification" {{ request('type') == 'Barangay Blotter Certification' ? 'selected' : '' }}>Barangay Case / Blotter Filing (₱100.00)</option>
+            <option value="Certification to File Action" {{ request('type') == 'Certification to File Action' ? 'selected' : '' }}>Certification to File Action / CFA (₱300.00)</option>
           </optgroup>
         </select>
       </div>
@@ -257,7 +265,7 @@
         </div>
         <div>
           <h3 class="text-sm font-extrabold">Issue Official Barangay Certificate</h3>
-          <p class="text-[10px] text-slate-400">Office of the Punong Barangay • Dacutan, Dumangas</p>
+          <p class="text-[10px] text-slate-400">Office of the Punong Barangay • Dacutan, Dumangas (Ordinance No. 2020-01)</p>
         </div>
       </div>
       <button onclick="closeIssueModal()" class="text-slate-400 hover:text-white">
@@ -284,25 +292,35 @@
 
       <!-- Document Type -->
       <div>
-        <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Document Type *</label>
+        <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Document Type (Ordinance No. 2020-01) *</label>
         <select name="doc_type" id="modal_doc_type" onchange="adjustFeeByDocType()" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 font-medium focus:ring-2 focus:ring-blue-500">
-          <optgroup label="── Personal Certificates & Clearances ──">
-            <option value="Barangay Clearance">Barangay Clearance / Certificate</option>
-            <option value="Certificate of Residency">Certificate of Residency</option>
-            <option value="Certificate of Indigency">Certificate of Indigency (Free / DSWD)</option>
-            <option value="Certificate of Good Moral Character">Certificate of Good Moral Character</option>
-            <option value="First Time Job Seeker (RA 11261)">First Time Job Seeker (Free under RA 11261)</option>
-            <option value="Barangay ID">Barangay ID</option>
-            <option value="Solo Parent Barangay Certification">Solo Parent Barangay Certification (Free)</option>
+          <optgroup label="── Sec. 3.A Barangay Clearances ──">
+            <option value="Barangay Clearance">Barangay Clearance (Employment / General) - ₱30.00</option>
+            <option value="Certificate of Residency">Certificate of Residency - ₱30.00</option>
+            <option value="Certificate of Good Moral Character">Certificate of Good Moral Character - ₱30.00</option>
+            <option value="Certificate of Indigency">Certificate of Indigency (Sec. 5 Free) - ₱0.00</option>
           </optgroup>
-          <optgroup label="── Business & Property Clearances ──">
-            <option value="Barangay Business Clearance">Barangay Business Clearance / Permit</option>
-            <option value="Barangay Building / Construction Clearance">Barangay Building / Construction Clearance</option>
-            <option value="Certificate of No Objection (CNO)">Certificate of No Objection (CNO)</option>
+          <optgroup label="── 12 Official Barangay Dacutan Certifications ──">
+            <option value="Certification for Delayed Registration">1. Certification for Delayed Registration - ₱30.00</option>
+            <option value="Certification for PWD">2. Certification for PWD (Sec. 5 Free) - ₱0.00</option>
+            <option value="Certification for Solo Parent">3. Certification for Solo Parent - ₱0.00</option>
+            <option value="Certification for Loan">4. Certification for Loan (Sec. 3.A.5) - ₱50.00</option>
+            <option value="Certification for ILECO (Electrification)">5. Certification for ILECO (Electrification) - ₱30.00</option>
+            <option value="Certification for Live-In">6. Certification for Live-In - ₱30.00</option>
+            <option value="Certification for Deceased / House">7. Certification for Deceased / House - ₱30.00</option>
+            <option value="Certification for First Time Job Seeker">8. Certification for First Time Job Seeker (RA 11261) - ₱0.00</option>
+            <option value="Certification for RSBSA Member">9. Certification for RSBSA Member - ₱30.00</option>
+            <option value="Certification for TIN ID">10. Certification for TIN ID / Proper ID - ₱30.00</option>
+            <option value="Certification for Building Permit">11. Certification for Building Permit (Sec. 4) - ₱200.00</option>
+            <option value="Certification for Electrical Permit">12. Certification for Electrical Permit (Sec. 3.A.6) - ₱30.00</option>
           </optgroup>
-          <optgroup label="── Legal & Dispute Records ──">
-            <option value="Barangay Blotter Certification">Barangay Blotter Certification</option>
-            <option value="Certification to File Action">Certification to File Action (CFA)</option>
+          <optgroup label="── Sec. 3.B Business, Sec. 3.C Aquatic & Sec. 8 Legal ──">
+            <option value="Barangay Business Clearance">Barangay Business Clearance / Permit (Sec. 3.B) - ₱100.00</option>
+            <option value="Aquatic Resources / Fisherfolk Clearance">Aquatic Resources Clearance (Sec. 3.C) - ₱100.00</option>
+            <option value="Barangay Building / Construction Clearance">Barangay Building / Construction Clearance (Sec. 4) - ₱200.00</option>
+            <option value="Certificate of No Objection (CNO)">Certificate of No Objection (CNO) - ₱100.00</option>
+            <option value="Barangay Blotter Certification">Barangay Blotter / Case Filing (Sec. 3.A.7) - ₱100.00</option>
+            <option value="Certification to File Action">Certification to File Action / CFA (Sec. 8) - ₱300.00</option>
           </optgroup>
         </select>
       </div>
@@ -314,7 +332,7 @@
           type="text" 
           name="purpose" 
           required 
-          placeholder="e.g. Local Employment / Police Clearance / Scholarship Application"
+          placeholder="e.g. Local Employment / ILECO Connection / RSBSA / Business Permit"
           class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:ring-2 focus:ring-blue-500"
         >
       </div>
@@ -322,8 +340,8 @@
       <!-- Fee & Receipt Numbers -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Fee Paid (₱) *</label>
-          <input type="number" step="0.01" name="amount_paid" id="modal_fee" value="50.00" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 font-mono font-bold focus:ring-2 focus:ring-blue-500">
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Ordinance Fee (₱) *</label>
+          <input type="number" step="0.01" name="amount_paid" id="modal_fee" value="30.00" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 font-mono font-bold focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
           <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Official Receipt (OR) #</label>
@@ -369,20 +387,25 @@
     const feeInput = document.getElementById('modal_fee');
     const freeTypes = [
       'Certificate of Indigency',
+      'Certification for PWD',
+      'Certification for Solo Parent',
+      'Solo Parent Barangay Certification',
+      'Certification for First Time Job Seeker',
       'First Time Job Seeker (RA 11261)',
-      'First-Time Jobseeker Certification (RA 11261)',
-      'Solo Parent Barangay Certification'
+      'First-Time Jobseeker Certification (RA 11261)'
     ];
     if (freeTypes.includes(docType)) {
       feeInput.value = '0.00';
-    } else if (docType === 'Barangay Business Clearance' || docType.includes('Business')) {
-      feeInput.value = '150.00';
-    } else if (docType === 'Barangay Building / Construction Clearance') {
+    } else if (docType === 'Certification to File Action') {
+      feeInput.value = '300.00';
+    } else if (docType.includes('Building')) {
       feeInput.value = '200.00';
-    } else if (docType === 'Certificate of No Objection (CNO)' || docType === 'Certification to File Action') {
+    } else if (docType.includes('Business') || docType.includes('Aquatic') || docType.includes('Blotter') || docType.includes('Objection')) {
       feeInput.value = '100.00';
-    } else {
+    } else if (docType.includes('Loan')) {
       feeInput.value = '50.00';
+    } else {
+      feeInput.value = '30.00';
     }
   }
 </script>

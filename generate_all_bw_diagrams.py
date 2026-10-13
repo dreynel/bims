@@ -17,11 +17,22 @@ skinparam ArrowThickness 1.3
 skinparam DefaultFontColor #000000
 """
 
+BW_SKIN_ORTHO = """
+skinparam defaultFontName "Segoe UI"
+skinparam shadowing false
+skinparam monochrome true
+skinparam linetype ortho
+skinparam roundCorner 0
+skinparam ArrowColor #000000
+skinparam ArrowThickness 1.3
+skinparam DefaultFontColor #000000
+"""
+
 # ==========================================
 # 1. FIGURE 1: CONCEPTUAL FRAMEWORK (IPO)
 # ==========================================
 puml_fig1 = f"""@startuml
-{BW_SKIN}
+{BW_SKIN_ORTHO}
 
 skinparam rectangle {{
     BackgroundColor #FFFFFF
@@ -31,16 +42,16 @@ skinparam rectangle {{
     FontSize 11
 }}
 
-rectangle "**INPUT**\\n\\n**Resident Information**\\n• Full Name, Birthday, Gender, Civil Status\\n• Residence Address & Purok Mapping\\n• Sector Flags (Senior, PWD, 4Ps, Indigent)\\n\\n**Document Request Information**\\n• 12 Clearance & Certificate Types\\n• Purpose of Request & Requirements\\n• Citizen Contact Email Address\\n\\n**Barangay Operations Data**\\n• Blotter Incidents & Lupon Hearings\\n• Calamity & SAP Aid Distributions\\n• Official Receipt (OR) & CTC Numbers\\n\\n**Administrative Data**\\n• Staff Credentials & Access Roles" as Input
+rectangle "**INPUT**\\n\\n**Resident Census Information**\\n• Demographics (Name, Age, Gender, Civil Status)\\n• 7 Puroks of Barangay Dacutan\\n• Sector Flags (Senior, PWD, 4Ps, Indigent)\\n\\n**Document Request & Appointment Data**\\n• Clearances & Certifications (Ordinance 2020-01)\\n• Purpose of Request & Requirements\\n• Citizen Contact Email Address\\n• 4-Digit Email OTP Verification Code\\n\\n**Barangay Operations Data**\\n• Lupon Blotter Incidents & Hearings\\n• Calamity Relief & SAP Aid Distributions\\n• Official Receipt (OR) & CTC Records\\n\\n**Administrative Leadership**\\n• Hon. Stephen James D. Foerster (Punong Barangay)\\n• Mrs. Pearl Joy J. Amuan (Barangay Secretary)" as Input
 
-rectangle "**PROCESS**\\n\\n**Phase 1: Planning & Analysis**\\n• Needs Assessment in Brgy Dacutan\\n• Frontline Service Workflow Analysis\\n• Hardware & Software Specification\\n\\n**Phase 2: Prototyping & Development**\\n• Full-Stack Web App (Laravel 12 & MySQL)\\n• 24/7 Citizen Web Portal & Requesting\\n• 2-Tier Approval Hierarchy\\n  (Secretary Review & Captain Approval)\\n• Automated SMTP Email Notifications\\n• Dual-Seal Standard A4 Clearance Generator\\n\\n**Phase 3: Testing & Evaluation**\\n• Component & Integration Testing\\n• ISO 25010 Quality Evaluation" as Process
+rectangle "**PROCESS**\\n\\n**Phase 1: Planning & Analysis**\\n• Needs Assessment in Brgy Dacutan\\n• Review of Barangay Ordinance No. 2020-01\\n• Hardware & Software Specification\\n\\n**Phase 2: Prototyping & Development**\\n• Full-Stack Web App (Laravel 12 & MySQL)\\n• 24/7 Citizen Web Portal & Appointment Desk\\n• Lightweight 4-Digit Email OTP Verification\\n  (Spam Prevention & Email Authentication)\\n• 2-Tier Approval Hierarchy\\n  (Secretary Review & Captain Approval)\\n• Automated SMTP Email Notifications\\n• Dual-Seal Standard A4 Clearance Generator\\n\\n**Phase 3: Testing & Evaluation**\\n• Component & Integration Testing\\n• ISO 25010 Quality Evaluation" as Process
 
-rectangle "**OUTPUT**\\n\\n**Barangay Information and**\\n**Management System (BIMS)**\\n**for Barangay Dacutan, Dumangas**\\n\\n• 24/7 Public Citizen Web Portal\\n• 12 Online Document Offerings\\n• 4-Stage Real-Time Request Tracker\\n• Automated Status Email Notifications\\n• 2-Tier Clearance Approval Hierarchy\\n• Centralized Resident Census Profiling\\n• Blotter & Lupon Case Management\\n• Calamity & SAP Relief Distribution\\n• Authentic Republic Standard A4 Clearances" as Output
+rectangle "**OUTPUT**\\n\\n**Barangay Information and**\\n**Management System (BIMS)**" as Output
 
 rectangle "**FEEDBACK & CONTINUOUS EVALUATION**\\nISO 25010 Software Quality Evaluation & Frontline Community User Feedback" as Feedback
 
-Input -right-> Process : " System Processing\\n & Data Flow "
-Process -right-> Output : " System Deliverables\\n & Deployment "
+Input -right-> Process : " System Data Flow "
+Process -right-> Output : " System Deliverable "
 
 Output -down-> Feedback
 Feedback -left-> Input
@@ -123,14 +134,15 @@ skinparam rectangle {{
 }}
 
 actor "Resident / Citizen\\n(General Public)" as Resident
-actor "Barangay Secretary\\n(Clerk & Records Officer)" as Secretary
-actor "Punong Barangay\\n(Barangay Captain)" as Captain
+actor "Mrs. Pearl Joy J. Amuan\\n(Barangay Secretary & Records Officer)" as Secretary
+actor "Hon. Stephen James D. Foerster\\n(Punong Barangay)" as Captain
 
 rectangle "Barangay Information and Management System (BIMS)" {{
 
     package "Public Citizen Frontline Services" as P1 {{
         usecase "View Announcements & Hotlines" as UC1
-        usecase "Apply for Clearances (12 Types)" as UC2
+        usecase "Apply for Clearances / Appointments (12 Types)" as UC2
+        usecase "Verify 4-Digit OTP via Email" as UC2_OTP
         usecase "Track Document Request Status" as UC3
         usecase "Receive Automated Email Notifications" as UC4
     }}
@@ -156,6 +168,7 @@ rectangle "Barangay Information and Management System (BIMS)" {{
 Resident --> UC1
 Resident --> UC2
 Resident --> UC3
+UC2 ..> UC2_OTP : <<include>>
 UC2 ..> UC4 : <<include>>
 
 ' Secretary Links
@@ -213,20 +226,38 @@ skinparam condition {{
 |Resident / Citizen|
 start
 :Access Public Citizen Portal;
-:Fill out online request form\\n(select from 12 document offerings);
-:Enter email address & request purpose;
-:Submit document request online;
+:Fill out online request & appointment form\\n(select from official document offerings);
+:Enter active email address & request purpose;
+:Click "Request 4-Digit Email OTP";
 
 |BIMS Web System & Mailer|
-:Validate input fields;
-:Generate unique 8-character\\ntracking reference code;
-:Record application as "Submitted";
-:Send automated Confirmation Email\\nwith tracking reference code;
+:Validate email address format;
+:Generate temporary 4-digit OTP;
+:Transmit OTP via automated SMTP email;
 
-|Barangay Secretary (Clerk)|
+|Resident / Citizen|
+:Check email inbox for 4-digit OTP;
+:Enter 4-digit OTP code into verification field;
+:Submit document appointment request;
+
+|BIMS Web System & Mailer|
+if (Is OTP code valid?) then (no)
+    :Display error message\\n"Invalid or Expired OTP";
+    |Resident / Citizen|
+    :Re-enter or request new OTP;
+    stop
+else (yes)
+    |BIMS Web System & Mailer|
+    :Authenticate genuine applicant\\n(eliminates spam & fake entries);
+    :Generate unique tracking reference code\\n(e.g., DAC-2026-XXXX);
+    :Record application as "Submitted";
+    :Send automated Confirmation Email\\nwith tracking reference code;
+endif
+
+|Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
 :Log in to Administrative Dashboard;
 :Open Pending Request queue;
-:Inspect applicant against Census\\nProfiles & Blotter Records;
+:Inspect applicant against 2025 Census\\nDemographics & Blotter Records;
 
 if (Application valid & complete?) then (no)
     :Reject application with remarks;
@@ -237,14 +268,14 @@ if (Application valid & complete?) then (no)
     :Receive rejection email;
     stop
 else (yes)
-    |Barangay Secretary (Clerk)|
+    |Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
     :Endorse request (Tier 1 completed);
     |BIMS Web System & Mailer|
     :Update status to "Evaluated";
     :Send Evaluation Notice email;
 endif
 
-|Punong Barangay (Captain)|
+|Hon. Stephen James D. Foerster (Punong Barangay)|
 :Access Executive Dashboard;
 :Review application in Evaluated queue;
 
@@ -256,14 +287,14 @@ if (Grant Executive Approval?) then (no)
     :Receive notification email;
     stop
 else (yes)
-    |Punong Barangay (Captain)|
+    |Hon. Stephen James D. Foerster (Punong Barangay)|
     :Authorize executive approval (Tier 2);
     |BIMS Web System & Mailer|
     :Update status to "Approved";
     :Send Captain Approval Notice email;
 endif
 
-|Barangay Secretary (Clerk)|
+|Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
 :Record Official Receipt (OR) and\\nCommunity Tax Certificate (CTC) numbers;
 :Print official Republic standard A4 clearance\\nwith municipal and barangay seals;
 :Update status to "Ready for Release";
@@ -535,7 +566,7 @@ node "3. APPLICATION & SERVICE TIER (LIVE CLOUD HOSTING)" as CloudServer {{
     
     rectangle "Laravel 12 Backend Application\\n• HTTP Routing & Authentication Middleware\\n• Eloquent ORM & Relational Business Logic\\n• Blade Templates & Responsive UI" as AppLayer
     
-    rectangle "Automated Mailer Service\\n• SMTP Protocol Integration\\n• Real-Time Notification Dispatcher" as MailService
+    rectangle "Messaging & Notification Services\\n• Automated Email & OTP Dispatcher Service\\n• SMTP Protocol Integration (4-Digit Email OTP)" as MailService
 }}
 
 node "4. DATA STORAGE TIER" as DBTier {{
@@ -547,7 +578,7 @@ node "4. DATA STORAGE TIER" as DBTier {{
 ClientTier -down-> Internet : " Encrypted HTTPS Traffic (Port 443) "
 Internet -down-> WebServer : " Secure Web Requests "
 WebServer -right-> AppLayer : " FastCGI / PHP "
-AppLayer -right-> MailService : " Dispatch Status Emails "
+AppLayer -right-> MailService : " Dispatch OTPs & Status Emails "
 AppLayer -down-> MySQL : " SQL Queries & Record Sets "
 
 @enduml

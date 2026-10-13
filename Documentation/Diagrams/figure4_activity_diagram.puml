@@ -1,56 +1,72 @@
 @startuml
-
 skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 14
 skinparam shadowing false
 skinparam monochrome true
-skinparam roundCorner 4
 skinparam ArrowColor #000000
-skinparam ArrowThickness 1.3
+skinparam ArrowThickness 1.8
 skinparam DefaultFontColor #000000
-
 
 skinparam activity {
     BackgroundColor #FFFFFF
     BorderColor #000000
-    BorderThickness 1.3
+    BorderThickness 1.8
     FontColor #000000
-    FontSize 10
+    FontSize 14
 }
 
 skinparam partition {
     BackgroundColor #FFFFFF
     BorderColor #000000
-    BorderThickness 1.4
+    BorderThickness 2.0
     FontColor #000000
-    FontSize 11
+    FontSize 15
     FontStyle bold
 }
 
 skinparam condition {
     BackgroundColor #FFFFFF
     BorderColor #000000
-    BorderThickness 1.3
+    BorderThickness 1.8
     FontColor #000000
-    FontSize 10
+    FontSize 14
 }
 
 |Resident / Citizen|
 start
 :Access Public Citizen Portal;
-:Fill out online request form\n(select from 12 document offerings);
-:Enter email address & request purpose;
-:Submit document request online;
+:Fill out online request & appointment form\n(select from official document offerings);
+:Enter active email address & request purpose;
+:Click "Request 4-Digit Email OTP";
 
 |BIMS Web System & Mailer|
-:Validate input fields;
-:Generate unique 8-character\ntracking reference code;
-:Record application as "Submitted";
-:Send automated Confirmation Email\nwith tracking reference code;
+:Validate email address format;
+:Generate temporary 4-digit OTP;
+:Transmit OTP via automated SMTP email;
 
-|Barangay Secretary (Clerk)|
+|Resident / Citizen|
+:Check email inbox for 4-digit OTP;
+:Enter 4-digit OTP code into verification field;
+:Submit document appointment request;
+
+|BIMS Web System & Mailer|
+if (Is OTP code valid?) then (no)
+    :Display error message\n"Invalid or Expired OTP";
+    |Resident / Citizen|
+    :Re-enter or request new OTP;
+    stop
+else (yes)
+    |BIMS Web System & Mailer|
+    :Authenticate genuine applicant\n(eliminates spam & fake entries);
+    :Generate unique tracking reference code\n(e.g., DAC-2026-XXXX);
+    :Record application as "Submitted";
+    :Send automated Confirmation Email\nwith tracking reference code;
+endif
+
+|Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
 :Log in to Administrative Dashboard;
 :Open Pending Request queue;
-:Inspect applicant against Census\nProfiles & Blotter Records;
+:Inspect applicant against 2025 Census\nDemographics & Blotter Records;
 
 if (Application valid & complete?) then (no)
     :Reject application with remarks;
@@ -61,14 +77,14 @@ if (Application valid & complete?) then (no)
     :Receive rejection email;
     stop
 else (yes)
-    |Barangay Secretary (Clerk)|
+    |Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
     :Endorse request (Tier 1 completed);
     |BIMS Web System & Mailer|
     :Update status to "Evaluated";
     :Send Evaluation Notice email;
 endif
 
-|Punong Barangay (Captain)|
+|Hon. Stephen James D. Foerster (Punong Barangay)|
 :Access Executive Dashboard;
 :Review application in Evaluated queue;
 
@@ -80,14 +96,14 @@ if (Grant Executive Approval?) then (no)
     :Receive notification email;
     stop
 else (yes)
-    |Punong Barangay (Captain)|
+    |Hon. Stephen James D. Foerster (Punong Barangay)|
     :Authorize executive approval (Tier 2);
     |BIMS Web System & Mailer|
     :Update status to "Approved";
     :Send Captain Approval Notice email;
 endif
 
-|Barangay Secretary (Clerk)|
+|Mrs. Pearl Joy J. Amuan (Barangay Secretary)|
 :Record Official Receipt (OR) and\nCommunity Tax Certificate (CTC) numbers;
 :Print official Republic standard A4 clearance\nwith municipal and barangay seals;
 :Update status to "Ready for Release";

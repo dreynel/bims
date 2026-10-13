@@ -1,35 +1,32 @@
 @startuml
-
 skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 14
 skinparam shadowing false
 skinparam monochrome true
-skinparam roundCorner 4
-skinparam ArrowColor #000000
-skinparam ArrowThickness 1.3
-skinparam DefaultFontColor #000000
-
 skinparam sequence {
     ArrowColor #000000
-    ArrowThickness 1.3
+    ArrowThickness 1.8
     ActorBorderColor #000000
-    ActorBorderThickness 1.5
+    ActorBorderThickness 1.8
     ActorBackgroundColor #FFFFFF
     ParticipantBorderColor #000000
-    ParticipantBorderThickness 1.5
+    ParticipantBorderThickness 1.8
     ParticipantBackgroundColor #FFFFFF
-    ParticipantFontSize 11
+    ParticipantFontSize 15
+    ParticipantFontStyle bold
     ParticipantFontColor #000000
     LifeLineBorderColor #000000
-    LifeLineBorderThickness 1.2
+    LifeLineBorderThickness 1.4
     LifeLineBackgroundColor #FFFFFF
 }
 
 skinparam alt {
     BackgroundColor #FFFFFF
     BorderColor #000000
-    BorderThickness 1.5
+    BorderThickness 1.8
     FontColor #000000
-    FontSize 11
+    FontSize 14
+    FontStyle bold
 }
 
 actor "Resident / Citizen" as Resident
@@ -37,7 +34,7 @@ boundary "Web Browser\n(Public Portal)" as Browser
 control "Laravel Router\n(web.php)" as Router
 control "PublicPortalController" as Controller
 entity "Certificate Model" as Model
-database "MySQL 8.0 Database" as DB
+database "MySQL Relational DB" as DB
 
 Resident -> Browser: 1. Enter 8-character Tracking Code\n(e.g., CERT-A1B2C3D4) and click "Track"
 activate Browser

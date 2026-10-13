@@ -1,69 +1,36 @@
 @startuml
-
 skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 15
 skinparam shadowing false
 skinparam monochrome true
-skinparam roundCorner 4
+skinparam packageFontSize 16
+skinparam packageFontStyle bold
+skinparam usecaseFontSize 14
+skinparam actorFontSize 15
+skinparam actorFontStyle bold
+skinparam ArrowThickness 1.8
 skinparam ArrowColor #000000
-skinparam ArrowThickness 1.3
-skinparam DefaultFontColor #000000
-
 
 left to right direction
 
-skinparam actor {
-    BackgroundColor #FFFFFF
-    BorderColor #000000
-    BorderThickness 1.5
-    FontColor #000000
-    FontSize 11
-    FontStyle bold
-}
-
-skinparam usecase {
-    BackgroundColor #FFFFFF
-    BorderColor #000000
-    BorderThickness 1.3
-    FontColor #000000
-    FontSize 10
-}
-
-skinparam package {
-    BackgroundColor #FFFFFF
-    BorderColor #000000
-    BorderThickness 1.3
-    FontColor #000000
-    FontSize 11
-    FontStyle bold
-}
-
-skinparam rectangle {
-    BackgroundColor #FFFFFF
-    BorderColor #000000
-    BorderThickness 1.5
-    FontColor #000000
-    FontSize 12
-    FontStyle bold
-}
-
 actor "Resident / Citizen\n(General Public)" as Resident
-actor "Barangay Secretary\n(Clerk & Records Officer)" as Secretary
-actor "Punong Barangay\n(Barangay Captain)" as Captain
 
 rectangle "Barangay Information and Management System (BIMS)" {
 
     package "Public Citizen Frontline Services" as P1 {
         usecase "View Announcements & Hotlines" as UC1
-        usecase "Apply for Clearances (12 Types)" as UC2
+        usecase "Consult AI Chatbot for Assistance\n(Google Gemini API)" as UC_AI
+        usecase "Apply for Clearances / Appointments\n(12 Official Offerings)" as UC2
+        usecase "Verify 4-Digit OTP via Email" as UC2_OTP
         usecase "Track Document Request Status" as UC3
         usecase "Receive Automated Email Notifications" as UC4
     }
 
     package "Administrative & Clerical Operations" as P2 {
-        usecase "Manage Resident Profiles & Vulnerabilities" as UC5
-        usecase "Review & Evaluate Applications (Tier 1)" as UC6
+        usecase "Manage Resident Profiles & Census" as UC5
+        usecase "Review & Evaluate Requests (Tier 1)" as UC6
         usecase "Manage Blotter Records & Hearings" as UC7
-        usecase "Log Calamity & SAP Relief Distributions" as UC8
+        usecase "Log Calamity & SAP Relief Aid" as UC8
         usecase "Record Official OR & CTC Payments" as UC9
         usecase "Generate & Print Official A4 Clearances" as UC10
     }
@@ -71,33 +38,37 @@ rectangle "Barangay Information and Management System (BIMS)" {
     package "Executive Governance & Oversight" as P3 {
         usecase "View Executive Analytics Dashboard" as UC11
         usecase "Grant Executive Approval (Tier 2)" as UC12
-        usecase "Oversee Lupon Resolutions & Certifications" as UC13
+        usecase "Oversee Lupon Dispute Resolutions" as UC13
         usecase "Sign & Issue Official Clearances" as UC14
     }
+
+    ' Place packages horizontally side-by-side to consume space and keep height proportionate
+    P1 -[hidden]right- P2
+    P2 -[hidden]right- P3
 }
 
-' Resident Links
+actor "Mrs. Pearl Joy J. Amuan\n(Barangay Secretary & Records Officer)" as Secretary
+actor "Hon. Stephen James D. Foerster\n(Punong Barangay)" as Captain
+
+' Resident on Left
 Resident --> UC1
+Resident --> UC_AI
 Resident --> UC2
 Resident --> UC3
+UC2 ..> UC2_OTP : <<include>>
 UC2 ..> UC4 : <<include>>
 
-' Secretary Links
-Secretary --> UC5
-Secretary --> UC6
-Secretary --> UC7
-Secretary --> UC8
-Secretary --> UC9
-Secretary --> UC10
+' Staff on Right
+UC5 <-- Secretary
+UC6 <-- Secretary
+UC7 <-- Secretary
+UC8 <-- Secretary
+UC9 <-- Secretary
+UC10 <-- Secretary
 
-' Captain Links
-Captain --> UC11
-Captain --> UC12
-Captain --> UC13
-Captain --> UC14
-
-' Vertical order of actors matching packages
-Resident -[hidden]down- Secretary
-Secretary -[hidden]down- Captain
+UC11 <-- Captain
+UC12 <-- Captain
+UC13 <-- Captain
+UC14 <-- Captain
 
 @enduml

@@ -89,16 +89,16 @@
 
       <div class="grid grid-cols-2 gap-3 pb-3 border-b border-slate-100">
         <div>
-          <span class="text-[10px] uppercase font-bold text-slate-400 block">Official Regulatory Fee:</span>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Ordinance No. 2020-01 Fee:</span>
           @if($certificate->amount_paid == 0)
-            <span class="font-black text-emerald-700">₱0.00 (Statutory Exemption)</span>
+            <span class="font-black text-emerald-700">₱0.00 (Sec. 5 / RA 11261 Free Waiver)</span>
           @else
             <span class="font-black text-slate-900">₱{{ number_format($certificate->amount_paid, 2) }}</span>
           @endif
         </div>
         <div>
           <span class="text-[10px] uppercase font-bold text-slate-400 block">Official Receipt (OR) #:</span>
-          <span class="font-mono font-bold text-slate-800">{{ $certificate->or_no ?? 'Pending Collection' }}</span>
+          <span class="font-mono font-bold text-slate-800">{{ $certificate->or_no ?? 'Payable upon walk-in pickup' }}</span>
         </div>
       </div>
     </div>
@@ -106,13 +106,13 @@
     <!-- Pickup Window & Instructions -->
     <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs text-amber-900 space-y-1.5">
       <div class="flex items-center gap-2 font-bold text-amber-950">
-        <i class="fa-solid fa-circle-exclamation text-amber-600"></i>
-        <span>Instructions for Claiming at Barangay Hall</span>
+        <i class="fa-solid fa-calendar-check text-amber-600"></i>
+        <span>Walk-In Appointment &amp; Claiming Instructions (No Digitalized Certificates)</span>
       </div>
       <p class="text-[11px] text-amber-800 leading-relaxed">
-        1. Present this claim stub (printed copy or on your mobile device) at <strong>Window 1 (Document Releasing Desk)</strong>.<br>
-        2. Present at least one (1) valid Government ID (PhilSys National ID, Driver's License, Voter's, Postal).<br>
-        3. If applicable, settle the regulatory fee at Window 2 (Treasury) to receive your official receipt.
+        1. Online portal requests serve as your <strong>official pickup appointment</strong>. Certifications require the Punong Barangay's wet signature and official Barangay dry seal.<br>
+        2. Present this claim stub (printed copy or on your mobile device) at <strong>Window 1 (Document Releasing Desk)</strong>.<br>
+        3. Present at least one (1) valid Government ID and settle the Barangay Ordinance No. 2020-01 fee (if not exempt) at Window 2 (Treasury).
       </p>
     </div>
 

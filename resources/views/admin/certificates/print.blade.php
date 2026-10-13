@@ -142,54 +142,54 @@
             <p class="text-[9px] font-extrabold uppercase text-slate-400 tracking-wider text-center">Barangay Kagawads</p>
             
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. MA. ELENA FERNANDEZ</p>
-              <p class="text-[8px] text-slate-500">Comm. on Rules & Ordinances</p>
+              <p class="font-bold text-slate-800">HON. RICARDO M. BAUTISTA</p>
+              <p class="text-[8px] text-slate-500">Comm. on Rules &amp; Ordinances</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. JOSE RAMON DIAZ</p>
+              <p class="font-bold text-slate-800">HON. EDUARDO P. VILLANUEVA</p>
               <p class="text-[8px] text-slate-500">Comm. on Appropriations</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. CARLOS GOMEZ</p>
-              <p class="text-[8px] text-slate-500">Comm. on Peace & Order</p>
+              <p class="font-bold text-slate-800">HON. REYNALDO T. SORIANO</p>
+              <p class="text-[8px] text-slate-500">Comm. on Peace &amp; Order</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. MARITES SANTOS</p>
-              <p class="text-[8px] text-slate-500">Comm. on Health & Sanitation</p>
+              <p class="font-bold text-slate-800">HON. TERESITA G. MAGBANUA</p>
+              <p class="text-[8px] text-slate-500">Comm. on Health &amp; Sanitation</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. ANTONIO REYES</p>
-              <p class="text-[8px] text-slate-500">Comm. on Agriculture</p>
+              <p class="font-bold text-slate-800">HON. FERNANDO L. TOLENTINO</p>
+              <p class="text-[8px] text-slate-500">Comm. on Agriculture &amp; Aquatic</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. PATRICIA LOPEZ</p>
-              <p class="text-[8px] text-slate-500">Comm. on Women & Family</p>
+              <p class="font-bold text-slate-800">HON. LUZVIMINDA C. DE GUZMAN</p>
+              <p class="text-[8px] text-slate-500">Comm. on Women &amp; Family</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. EDUARDO CRUZ</p>
+              <p class="font-bold text-slate-800">HON. ROGELIO B. MACARAEG</p>
               <p class="text-[8px] text-slate-500">Comm. on Infrastructure</p>
             </div>
           </div>
 
           <div class="border-t border-slate-300 pt-2 space-y-1.5">
             <div class="text-left">
-              <p class="font-bold text-slate-800">HON. C.J. BELMONTE</p>
+              <p class="font-bold text-slate-800">HON. MARK ANTHONY R. DIZON</p>
               <p class="text-[8px] text-slate-500">SK Chairperson</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">MRS. MA. ELENA BALLEZA</p>
+              <p class="font-bold text-slate-800">MRS. MA. ELENA S. BALLEZA</p>
               <p class="text-[8px] text-slate-500">Barangay Secretary</p>
             </div>
 
             <div class="text-left">
-              <p class="font-bold text-slate-800">MR. DANILO VILLANUEVA</p>
+              <p class="font-bold text-slate-800">MR. DANILO A. VILLANUEVA</p>
               <p class="text-[8px] text-slate-500">Barangay Treasurer</p>
             </div>
           </div>
@@ -258,7 +258,26 @@
                 ISSUED upon request of the interested party for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
               </p>
 
-            @elseif($certificate->doc_type === 'Solo Parent Barangay Certification')
+            @elseif(str_contains($certificate->doc_type, 'Delayed Registration'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, Filipino, is a bona fide resident of <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo, and is personally known to the officials of this barangay.
+              </p>
+              <p>
+                FURTHER CERTIFIES that based on community verification and Purok records, the facts of birth and parentage of the subject individual are authentic and verified for the purpose of <strong class="font-bold">DELAYED REGISTRATION OF BIRTH / CIVIL REGISTRY RECORD</strong> before the Local Civil Registrar (LCR) and Philippine Statistics Authority (PSA).
+              </p>
+              <p>
+                ISSUED upon request for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'PWD'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, Filipino, residing at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo, is a registered <strong class="font-bold">PERSON WITH DISABILITY (PWD)</strong> in the official Barangay Dacutan Sectoral Registry.
+              </p>
+              <p>
+                THIS CERTIFICATION is issued free of charge pursuant to Section 5 of Barangay Ordinance No. 2020-01 and Republic Act No. 7277 (Magna Carta for Disabled Persons) in support of their application/renewal for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'Solo Parent'))
               <p>
                 THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, Filipino, residing at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo, is duly assessed and recognized by this office as a qualified <strong class="font-bold">SOLO PARENT</strong> pursuant to Republic Act No. 8972, as amended by Republic Act No. 11861 (Expanded Solo Parents Welfare Act).
               </p>
@@ -269,15 +288,81 @@
                 ISSUED for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
               </p>
 
-            @elseif($certificate->doc_type === 'Barangay ID')
+            @elseif(str_contains($certificate->doc_type, 'Loan'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, of legal age, Filipino, is a permanent resident in good standing of <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo.
+              </p>
+              <p>
+                FURTHER CERTIFIES that pursuant to Section 3.A.5 of Barangay Ordinance No. 2020-01, the above-named resident has no pending financial or legal accountability in this barangay and is of good credit and moral standing in the community.
+              </p>
+              <p>
+                ISSUED upon request for <strong class="font-bold">LOAN APPLICATION PURPOSES</strong>: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'ILECO') || str_contains($certificate->doc_type, 'Electrical'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, of legal age, Filipino, is the lawful occupant/owner of a residential structure located at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo.
+              </p>
+              <p>
+                FURTHER CERTIFIES that pursuant to Section 3.A.6 of Barangay Ordinance No. 2020-01, this Barangay interposes no objection to the electrical service connection, meter installation, or electrical permit application of the above-named resident with <strong class="font-bold">ILOILO II ELECTRIC COOPERATIVE, INC. (ILECO II)</strong> and the Municipal Engineering Office.
+              </p>
+              <p>
+                ISSUED for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'Live-In'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, of legal age, Filipino, and his/her common-law partner are bona fide residents of <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo.
+              </p>
+              <p>
+                BASED ON COMMUNITY VERIFICATION, the aforementioned couple have been continuously cohabiting under one roof as husband and wife (<strong class="font-bold">LIVE-IN PARTNERS</strong>) in this barangay and are recognized as such by their neighbors and Purok officials.
+              </p>
+              <p>
+                ISSUED upon request for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'Deceased') || str_contains($certificate->doc_type, 'House'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, Filipino, is a verified resident/property claimant at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo.
+              </p>
+              <p>
+                FURTHER CERTIFIES that according to the official Barangay Registry and Purok records, the facts of residency, household structure ownership, and/or family bereavement record stated by the party are true and verified by this office.
+              </p>
+              <p>
+                ISSUED upon request for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'RSBSA'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, of legal age, Filipino, residing at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo, is an active agricultural farmer / coastal fisherfolk in this barangay.
+              </p>
+              <p>
+                FURTHER CERTIFIES that the above-named resident is qualified for enrollment and validation under the <strong class="font-bold">REGISTRY SYSTEM FOR BASIC SECTORS IN AGRICULTURE (RSBSA)</strong> of the Department of Agriculture (DA) and the Municipal Agriculture Office of Dumangas.
+              </p>
+              <p>
+                ISSUED upon request for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'TIN ID') || $certificate->doc_type === 'Barangay ID')
               <p>
                 THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, Filipino, residing at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Municipality of Dumangas, Province of Iloilo, is an officially verified and enrolled citizen in the master database of the Barangay Information and Management System (BIMS).
               </p>
               <p>
-                THIS OFFICIAL RECORD serves as verification of identity, local domicile, and community residency under Barangay Dacutan municipal governance.
+                THIS OFFICIAL RECORD serves as proper identification and verification of local domicile pursuant to Section 3.A.2 of Barangay Ordinance No. 2020-01 and Bureau of Internal Revenue (BIR) / government identification requirements.
               </p>
               <p>
                 ISSUED for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+              </p>
+
+            @elseif(str_contains($certificate->doc_type, 'Aquatic') || str_contains($certificate->doc_type, 'Fisherfolk'))
+              <p>
+                THIS IS TO CERTIFY that <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong>, of legal age, Filipino, residing at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Dumangas, Iloilo, is hereby granted <strong class="font-bold">AQUATIC RESOURCES &amp; COASTAL CLEARANCE</strong> pursuant to Section 3.C of Barangay Ordinance No. 2020-01.
+              </p>
+              <p>
+                FURTHER CERTIFIES that the holder has complied with local coastal and fishery conservation ordinances governing pumpboat operation, talaba/tahong culture, kasagan, punot, saluran, or fishpond livelihood within Barangay Dacutan waters.
+              </p>
+              <p>
+                ISSUED for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
               </p>
 
             @elseif(str_contains($certificate->doc_type, 'Business Clearance'))
@@ -285,7 +370,7 @@
                 THIS IS TO CERTIFY that business clearance is hereby granted to <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong> for the operation and registration of the commercial business enterprise located at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Dumangas, Iloilo.
               </p>
               <p>
-                FURTHER CERTIFIES that the aforementioned commercial establishment has complied with the basic sanitation, fire safety, environmental standards, and local barangay regulatory ordinances within our jurisdiction, and has paid the corresponding barangay clearance fees.
+                FURTHER CERTIFIES that the aforementioned commercial establishment has complied with the basic sanitation, fire safety, environmental standards, and local barangay regulatory ordinances (Barangay Ordinance No. 2020-01 Section 3.B) within our jurisdiction, and has paid the corresponding barangay clearance fees.
               </p>
               <p>
                 ISSUED for business permit licensing / renewal purpose: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
@@ -296,7 +381,7 @@
                 THIS IS TO CERTIFY that clearance is hereby granted to <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong> for the proposed building construction, renovation, or structural development located at <span class="font-bold">{{ $certificate->purok }}</span>, Barangay Dacutan, Dumangas, Iloilo.
               </p>
               <p>
-                FURTHER CERTIFIES that an on-site ocular verification conducted by barangay authorities indicates that the proposed project conforms with community safety, public right-of-way boundaries, and local zoning guidelines, with no adverse complaints from adjacent property owners.
+                FURTHER CERTIFIES that pursuant to Section 4 of Barangay Ordinance No. 2020-01, an on-site ocular verification conducted by barangay authorities indicates that the proposed project conforms with community safety, public right-of-way boundaries, and local zoning guidelines.
               </p>
               <p>
                 ISSUED for the purpose of securing Municipal Building / Zoning Permits: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
@@ -318,7 +403,7 @@
                 THIS IS TO CERTIFY that according to the Katarungang Pambarangay Blotter Book of Barangay Dacutan, Dumangas, Iloilo, there is an official incident/complaint recorded involving or requested by <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong> of <span class="font-bold">{{ $certificate->purok }}</span>.
               </p>
               <p>
-                THIS CERTIFICATION constitutes an authenticated excerpt from the official blotter records maintained by this office for evidentiary and documentation purposes under Section 403 of Republic Act No. 7160.
+                THIS CERTIFICATION constitutes an authenticated excerpt from the official blotter records maintained by this office for evidentiary and documentation purposes under Section 403 of Republic Act No. 7160 and Section 3.A.7 of Barangay Ordinance No. 2020-01.
               </p>
               <p>
                 ISSUED for: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
@@ -326,7 +411,7 @@
 
             @elseif(str_contains($certificate->doc_type, 'File Action') || str_contains($certificate->doc_type, 'CFA'))
               <p>
-                THIS IS TO CERTIFY that pursuant to Chapter VII, Title I, Book III of Republic Act No. 7160 (Katarungang Pambarangay Law), the dispute involving or initiated by <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong> regarding <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong> was submitted for conciliation and mediation.
+                THIS IS TO CERTIFY that pursuant to Chapter VII, Title I, Book III of Republic Act No. 7160 (Katarungang Pambarangay Law) and Section 8 of Barangay Ordinance No. 2020-01, the dispute involving or initiated by <strong class="font-black text-slate-950 uppercase underline">{{ $certificate->citizen_name }}</strong> regarding <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong> was submitted for conciliation and mediation.
               </p>
               <p>
                 FURTHER CERTIFIES that despite honest efforts and personal appearances before the Punong Barangay and the Pangkat ng Tagapagkasundo, <strong class="font-bold">NO AMICABLE SETTLEMENT WAS REACHED</strong>, and the respondent has failed/refused to settle or conciliate the controversy.
@@ -344,7 +429,7 @@
                 FURTHER CERTIFIES that according to the Katarungang Pambarangay Blotter and Barangay Peacekeeping Action Team (BPAT) records of this office, the aforementioned individual has <strong class="font-bold uppercase tracking-wide">NO DEROGATORY OR CRIMINAL RECORD</strong> filed against him/her, is known to be of good moral character, and is a peaceful, law-abiding citizen of the community.
               </p>
               <p>
-                THIS CLEARANCE is hereby granted upon the request of the interested party for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
+                THIS CLEARANCE is hereby granted pursuant to Section 3.A.1 of Barangay Ordinance No. 2020-01 upon the request of the interested party for the purpose of: <strong class="font-black uppercase text-slate-950">{{ $certificate->purpose }}</strong>.
               </p>
             @endif
 

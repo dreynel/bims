@@ -329,5 +329,71 @@
 
   </div>
 
+  <!-- 5. OFFICIAL BARANGAY DACUTAN PROFILE AS OF 2025 SUMMARY -->
+  <div class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6 shadow-sm space-y-5">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+      <div>
+        <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-chart-pie text-emerald-600"></i>
+          <span>Barangay Dacutan Official Profile Summary (As of 2025)</span>
+        </h3>
+        <p class="text-xs text-slate-500 mt-0.5">Official Barangay Census, Land Use, Boundaries, Housing Structure &amp; Livelihood Reference</p>
+      </div>
+      <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wider self-start sm:self-auto">
+        230.7171 km. • 7 Puroks • 2,337 Pop.
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+      <!-- Geography & Boundaries -->
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+        <h4 class="font-extrabold text-slate-800 uppercase text-[10px] tracking-wider text-emerald-700">Geography &amp; Boundaries</h4>
+        <div class="space-y-1 text-[11px] text-slate-600">
+          <div class="flex justify-between"><span>Land Area:</span><strong class="text-slate-900">230.7171 km.</strong></div>
+          <div class="flex justify-between"><span>Dist. from Poblacion:</span><strong class="text-slate-900">2.5 km.</strong></div>
+          <div class="flex justify-between"><span>To Iloilo (Zarraga / Coastal):</span><strong class="text-slate-900">27.5 km / 22 km</strong></div>
+          <div class="flex justify-between"><span>North / South:</span><strong class="text-slate-900">Sulangan-Binaobao / Coastal</strong></div>
+          <div class="flex justify-between"><span>East / West:</span><strong class="text-slate-900">Talusan-Sapao / Ermita</strong></div>
+        </div>
+      </div>
+
+      <!-- Land Use & Roads -->
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+        <h4 class="font-extrabold text-slate-800 uppercase text-[10px] tracking-wider text-blue-700">Land Characteristics</h4>
+        <div class="space-y-1 text-[11px] text-slate-600">
+          <div class="flex justify-between"><span>Plain / Rice Land:</span><strong class="text-slate-900">50%</strong></div>
+          <div class="flex justify-between"><span>Fishpond (Fish Fund):</span><strong class="text-slate-900">30%</strong></div>
+          <div class="flex justify-between"><span>Residential / Hilly:</span><strong class="text-slate-900">15% / 5%</strong></div>
+          <div class="flex justify-between"><span>Coastline Length:</span><strong class="text-slate-900">1.5 kms.</strong></div>
+          <div class="flex justify-between"><span>National / Brgy Roads:</span><strong class="text-slate-900">2.5 km / 1.5 km</strong></div>
+        </div>
+      </div>
+
+      <!-- Demographics & Housing -->
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+        <h4 class="font-extrabold text-slate-800 uppercase text-[10px] tracking-wider text-purple-700">2025 Census &amp; Housing</h4>
+        <div class="space-y-1 text-[11px] text-slate-600">
+          <div class="flex justify-between"><span>Total Pop (M / F):</span><strong class="text-slate-900">2,337 (1,142 / 1,195)</strong></div>
+          <div class="flex justify-between"><span>Families / Households:</span><strong class="text-slate-900">678 / 562</strong></div>
+          <div class="flex justify-between"><span>Voters / Seniors:</span><strong class="text-slate-900">1,445 / 556</strong></div>
+          <div class="flex justify-between"><span>PWD / 4Ps / OFW:</span><strong class="text-slate-900">69 / 69 / 75</strong></div>
+          <div class="flex justify-between"><span>Concrete / Light / Semi:</span><strong class="text-slate-900">260 / 193 / 102</strong></div>
+        </div>
+      </div>
+
+      <!-- Economic & Coastal Livelihood -->
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+        <h4 class="font-extrabold text-slate-800 uppercase text-[10px] tracking-wider text-amber-700">Economic &amp; Fisherfolks</h4>
+        <div class="space-y-1 text-[11px] text-slate-600">
+          <div class="flex justify-between"><span>Employed / Unemployed:</span><strong class="text-slate-900">740 / 505</strong></div>
+          <div class="flex justify-between"><span>Farmers (F: 25, M: 27):</span><strong class="text-slate-900">52</strong></div>
+          <div class="flex justify-between"><span>Fisherfolks (F: 67, M: 79):</span><strong class="text-slate-900">146</strong></div>
+          <div class="flex justify-between"><span>Talabahan / Kasagan:</span><strong class="text-slate-900">54 / 26</strong></div>
+          <div class="flex justify-between"><span>Punot / Pahubas / Saluran:</span><strong class="text-slate-900">22 / 7 / 3</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 @endsection

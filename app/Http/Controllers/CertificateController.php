@@ -50,20 +50,33 @@ class CertificateController extends Controller
 
         $resident = Resident::findOrFail($validated['resident_id']);
 
-        // Control No Prefix for all 12 document offerings
+        // Control No Prefix for all official Barangay Dacutan certifications & clearances
         $prefixMap = [
             'Barangay Clearance' => 'CLR',
             'Barangay Clearance / Certificate' => 'CLR',
             'Certificate of Residency' => 'RES',
             'Certificate of Indigency' => 'IND',
             'Certificate of Good Moral Character' => 'MOR',
+            'Certification for Delayed Registration' => 'DLR',
+            'Certification for PWD' => 'PWD',
+            'Certification for Solo Parent' => 'SOLO',
+            'Solo Parent Barangay Certification' => 'SOLO',
+            'Certification for Loan' => 'LOAN',
+            'Certification for ILECO (Electrification)' => 'ILEC',
+            'Certification for Electrical Permit' => 'ELEC',
+            'Certification for Live-In' => 'LVN',
+            'Certification for Deceased / House' => 'DEC',
+            'Certification for First Time Job Seeker' => 'JOB',
             'First Time Job Seeker (RA 11261)' => 'JOB',
             'First-Time Jobseeker Certification (RA 11261)' => 'JOB',
+            'Certification for RSBSA Member' => 'RSB',
+            'Certification for TIN ID' => 'TIN',
             'Barangay ID' => 'BID',
-            'Solo Parent Barangay Certification' => 'SOLO',
+            'Certification for Building Permit' => 'BLD',
+            'Barangay Building / Construction Clearance' => 'BLD',
             'Barangay Business Clearance' => 'BIZ',
             'Barangay Business Clearance / Permit' => 'BIZ',
-            'Barangay Building / Construction Clearance' => 'BLD',
+            'Aquatic Resources / Fisherfolk Clearance' => 'AQUA',
             'Certificate of No Objection (CNO)' => 'CNO',
             'Barangay Blotter Certification' => 'BLT',
             'Certification to File Action' => 'CFA',
@@ -72,25 +85,38 @@ class CertificateController extends Controller
         $randNum = mt_rand(1000, 9999);
         $controlNo = "{$prefix}-" . date('Y') . "-{$randNum}";
 
-        // Fee lookup table
+        // Official Barangay Dacutan Schedule of Fees (Barangay Ordinance No. 2020-01)
         $fees = [
-            'Barangay Clearance' => 50.00,
-            'Barangay Clearance / Certificate' => 50.00,
-            'Certificate of Residency' => 50.00,
+            'Barangay Clearance' => 30.00,
+            'Barangay Clearance / Certificate' => 30.00,
+            'Certificate of Residency' => 30.00,
             'Certificate of Indigency' => 0.00,
-            'Certificate of Good Moral Character' => 50.00,
+            'Certificate of Good Moral Character' => 30.00,
+            'Certification for Delayed Registration' => 30.00,
+            'Certification for PWD' => 0.00,
+            'Certification for Solo Parent' => 0.00,
+            'Solo Parent Barangay Certification' => 0.00,
+            'Certification for Loan' => 50.00,
+            'Certification for ILECO (Electrification)' => 30.00,
+            'Certification for Electrical Permit' => 30.00,
+            'Certification for Live-In' => 30.00,
+            'Certification for Deceased / House' => 30.00,
+            'Certification for First Time Job Seeker' => 0.00,
             'First Time Job Seeker (RA 11261)' => 0.00,
             'First-Time Jobseeker Certification (RA 11261)' => 0.00,
-            'Barangay ID' => 50.00,
-            'Solo Parent Barangay Certification' => 0.00,
-            'Barangay Business Clearance' => 150.00,
-            'Barangay Business Clearance / Permit' => 150.00,
+            'Certification for RSBSA Member' => 30.00,
+            'Certification for TIN ID' => 30.00,
+            'Barangay ID' => 30.00,
+            'Certification for Building Permit' => 200.00,
             'Barangay Building / Construction Clearance' => 200.00,
+            'Barangay Business Clearance' => 100.00,
+            'Barangay Business Clearance / Permit' => 100.00,
+            'Aquatic Resources / Fisherfolk Clearance' => 100.00,
             'Certificate of No Objection (CNO)' => 100.00,
-            'Barangay Blotter Certification' => 50.00,
-            'Certification to File Action' => 100.00,
+            'Barangay Blotter Certification' => 100.00,
+            'Certification to File Action' => 300.00,
         ];
-        $amountPaid = isset($validated['amount_paid']) ? (float)$validated['amount_paid'] : ($fees[$validated['doc_type']] ?? 50.00);
+        $amountPaid = isset($validated['amount_paid']) ? (float)$validated['amount_paid'] : ($fees[$validated['doc_type']] ?? 30.00);
 
         $cert = Certificate::create([
             'control_no' => $controlNo,

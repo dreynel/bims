@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 680" width="1320" height="680">
+    <defs>
+        <marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000"/>
+        </marker>
+        <filter id="shadow1" x="-2%" y="-2%" width="104%" height="104%">
+            <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+    </defs>
+
+    <!-- Canvas Background -->
+    <rect width="1320" height="680" fill="#FFFFFF"/>
+
+    <!-- ==================== 1. INPUT CONTAINER (Height: 480) ==================== -->
+    <rect x="40" y="40" width="370" height="480" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#shadow1)"/>
+    <rect x="40" y="40" width="370" height="48" rx="4" fill="#F2F2F2" stroke="#000000" stroke-width="2"/>
+    <text x="225" y="72" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#000000">INPUT</text>
+
+    <!-- Section 1 -->
+    <text x="60" y="120" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Resident Census Information</text>
+    <text x="70" y="143" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Demographics (Name, Age, Gender, Civil Status)</text>
+    <text x="70" y="165" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• 7 Puroks of Barangay Dacutan (Purok 1–7)</text>
+    <text x="70" y="187" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Sector Flags (Senior, PWD, 4Ps, Indigent)</text>
+
+    <!-- Section 2 -->
+    <text x="60" y="224" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Document Request &amp; Appointment Data</text>
+    <text x="70" y="247" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Clearances &amp; Certifications (Ordinance 2020-01)</text>
+    <text x="70" y="269" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Active Citizen Contact Email Address</text>
+    <text x="70" y="291" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• 4-Digit Email OTP Verification Code</text>
+
+    <!-- Section 3 -->
+    <text x="60" y="328" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Barangay Operations Data</text>
+    <text x="70" y="351" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Lupon Blotter Incidents &amp; Hearing Schedules</text>
+    <text x="70" y="373" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Calamity Relief &amp; SAP Aid Distributions</text>
+    <text x="70" y="395" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Official Receipt (OR) &amp; CTC Records</text>
+
+    <!-- Section 4 -->
+    <text x="60" y="432" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Administrative Leadership</text>
+    <text x="70" y="455" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Hon. Stephen James D. Foerster (Punong Barangay)</text>
+    <text x="70" y="477" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Mrs. Pearl Joy J. Amuan (Barangay Secretary)</text>
+
+    <!-- ==================== 2. PROCESS CONTAINER (Height: 480) ==================== -->
+    <rect x="475" y="40" width="370" height="480" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#shadow1)"/>
+    <rect x="475" y="40" width="370" height="48" rx="4" fill="#F2F2F2" stroke="#000000" stroke-width="2"/>
+    <text x="660" y="72" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#000000">PROCESS</text>
+
+    <!-- Phase 1 -->
+    <text x="495" y="120" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Phase 1: Planning &amp; Analysis</text>
+    <text x="505" y="143" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Community Needs Assessment in Brgy Dacutan</text>
+    <text x="505" y="165" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Review of Barangay Ordinance No. 2020-01</text>
+    <text x="505" y="187" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• System Architecture &amp; Specification</text>
+
+    <!-- Phase 2 -->
+    <text x="495" y="224" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Phase 2: Prototyping &amp; Development</text>
+    <text x="505" y="247" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Full-Stack Web Development (Laravel &amp; MySQL)</text>
+    <text x="505" y="269" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• 24/7 Citizen Web Portal &amp; E-Services</text>
+    <text x="505" y="291" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• AI Chatbot for Resident Assistance (Gemini API)</text>
+    <text x="505" y="313" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• 4-Digit Email OTP Verification (Spam Prevention)</text>
+    <text x="505" y="335" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Two-Tier Review Workflow (Secretary &amp; Captain)</text>
+    <text x="505" y="357" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Automated SMTP Email Notifications</text>
+    <text x="505" y="379" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Dual-Seal Standard A4 Clearance Generator</text>
+
+    <!-- Phase 3 -->
+    <text x="495" y="416" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="bold" fill="#000000">Phase 3: Testing &amp; Evaluation</text>
+    <text x="505" y="439" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• Component &amp; Route Integration Testing</text>
+    <text x="505" y="461" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• End-User Demonstration &amp; Usability Feedback</text>
+    <text x="505" y="483" font-family="'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#111111">• ISO/IEC 25010 Software Quality Evaluation</text>
+
+    <!-- ==================== 3. OUTPUT CONTAINER (Height: 480) ==================== -->
+    <rect x="910" y="40" width="370" height="480" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#shadow1)"/>
+    <rect x="910" y="40" width="370" height="48" rx="4" fill="#F2F2F2" stroke="#000000" stroke-width="2"/>
+    <text x="1095" y="72" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#000000">OUTPUT</text>
+
+    <!-- Output Content (ONLY TEXT - Strictly Name of System Alone, Centered) -->
+    <text x="1095" y="245" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#000000">Barangay Information</text>
+    <text x="1095" y="280" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#000000">and Management System</text>
+    <text x="1095" y="325" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#000000">(BIMS)</text>
+
+    <!-- ==================== CONNECTING ARROWS (NO TEXT ON LINES) ==================== -->
+    <line x1="410" y1="280" x2="475" y2="280" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow1)"/>
+    <line x1="845" y1="280" x2="910" y2="280" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow1)"/>
+
+    <!-- ==================== 4. SYSTEM EVALUATION (Bottom Container) ==================== -->
+    <!-- "for system evaluations shoyld be: System Evaluation ( ISO 25010 )" -->
+    <rect x="180" y="570" width="960" height="65" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="2" filter="url(#shadow1)"/>
+    <text x="660" y="610" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#000000">System Evaluation ( ISO 25010 )</text>
+
+    <!-- Orthogonal Feedback Arrows (NO TEXT ON LINES) -->
+    <!-- Output Bottom -> Evaluation Right -->
+    <polyline points="1095,520 1095,602 1140,602" fill="none" stroke="#000000" stroke-width="2" marker-end="url(#arrow1)"/>
+
+    <!-- Evaluation Left -> Input Bottom -->
+    <polyline points="180,602 225,602 225,520" fill="none" stroke="#000000" stroke-width="2" marker-end="url(#arrow1)"/>
+</svg>

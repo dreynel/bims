@@ -214,17 +214,15 @@
                       <span>Review</span>
                     </button>
 
-                    @if(in_array($cert->status, ['Approved', 'Ready for Release', 'Claimed']))
-                      <a 
-                        href="{{ route('resident.certificates.print', $cert->id) }}" 
-                        target="_blank" 
-                        class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold text-[11px] transition-all"
-                        title="View official document"
-                      >
-                        <i class="fa-solid fa-print"></i>
-                        <span>Print</span>
-                      </a>
-                    @endif
+                    <a 
+                      href="{{ route('resident.requests.claim-stub', $cert->id) }}" 
+                      target="_blank" 
+                      class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold text-[11px] transition-all"
+                      title="Print appointment & walk-in claim stub for Window 1"
+                    >
+                      <i class="fa-solid fa-ticket"></i>
+                      <span>Claim Stub</span>
+                    </a>
                   </div>
                 </td>
               </tr>

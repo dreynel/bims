@@ -209,7 +209,7 @@ class ResidentPortalController extends Controller
                     'label' => 'Application Filed',
                     'timestamp' => $cert->created_at->format('M d, Y h:i A'),
                     'completed' => true,
-                    'actor' => 'Citizen Self-Service'
+                    'actor' => 'Citizen Online Appointment Booking'
                 ],
                 'clerical' => [
                     'label' => 'Clerical Evaluation & Records Clearance',
@@ -219,21 +219,21 @@ class ResidentPortalController extends Controller
                 'executive' => [
                     'label' => 'Punong Barangay Administrative Sanction',
                     'completed' => in_array($cert->status, ['Approved', 'Ready for Release', 'Claimed']),
-                    'actor' => 'Hon. Roberto D. Dacutan (Punong Barangay)'
+                    'actor' => 'Hon. Roberto S. Alen (Punong Barangay)'
                 ],
                 'releasing' => [
-                    'label' => 'Document Printed, Stamped & Ready for Pickup',
+                    'label' => 'Hardcopy Printed, Wet-Signed, Dry-Sealed & Ready for Walk-In Pickup',
                     'completed' => in_array($cert->status, ['Ready for Release', 'Claimed']),
                     'location' => 'Barangay Hall Window 1 (Document Releasing Desk)'
                 ],
                 'claimed' => [
-                    'label' => 'Released to Resident / Completed',
+                    'label' => 'Claimed In Person at Barangay Hall / Completed',
                     'completed' => ($cert->status === 'Claimed'),
                 ]
             ],
             'actions' => [
-                'can_print' => in_array($cert->status, ['Approved', 'Ready for Release', 'Claimed']),
-                'print_url' => route('resident.certificates.print', $cert->id),
+                'can_print' => false,
+                'print_url' => route('resident.requests.claim-stub', $cert->id),
                 'claim_stub_url' => route('resident.requests.claim-stub', $cert->id),
                 'can_cancel' => ($cert->status === 'Pending'),
                 'cancel_url' => route('resident.requests.cancel', $cert->id),
@@ -242,7 +242,7 @@ class ResidentPortalController extends Controller
     }
 
     /**
-     * Submit Document Application
+     * Submit Document Application (Appointment for Physical Pickup at Barangay Hall)
      */
     public function submitApplication(Request $request)
     {
@@ -255,24 +255,49 @@ class ResidentPortalController extends Controller
             'ctc_no' => 'nullable|string|max:50',
         ]);
 
+        // Official Barangay Dacutan Schedule of Fees (Barangay Ordinance No. 2020-01)
         $fees = [
-            'Barangay Clearance' => 50.00,
-            'Barangay Clearance / Certificate' => 50.00,
-            'Certificate of Residency' => 50.00,
-            'Certificate of Indigency' => 0.00,
-            'Certificate of Good Moral Character' => 50.00,
+            // Sec. 3.A Barangay Clearances & Standard Certifications
+            'Barangay Clearance' => 30.00,
+            'Barangay Clearance / Certificate' => 30.00,
+            'Certificate of Residency' => 30.00,
+            'Certificate of Good Moral Character' => 30.00,
+            'Proper Identification' => 30.00,
+            'Barangay ID' => 30.00,
+            'Certification for TIN ID' => 30.00,
+            'Postal ID' => 50.00,
+
+            // Official Barangay Dacutan Certifications (from Certifications.jpg)
+            'Certification for Delayed Registration' => 30.00,
+            'Certification for PWD' => 0.00, // Free under Sec. 5
+            'Certification for Solo Parent' => 0.00,
+            'Solo Parent Barangay Certification' => 0.00,
+            'Certification for Loan' => 50.00, // Sec. 3.A.5 Loan Purposes
+            'Certification for ILECO (Electrification)' => 30.00, // Sec. 3.A.6 Electrification
+            'Certification for Electrical Permit' => 30.00, // Sec. 3.A.6 Electrification
+            'Certification for Live-In' => 30.00,
+            'Certification for Deceased / House' => 30.00,
+            'Certification for First Time Job Seeker' => 0.00, // RA 11261
             'First Time Job Seeker (RA 11261)' => 0.00,
             'First-Time Jobseeker Certification (RA 11261)' => 0.00,
-            'Barangay ID' => 50.00,
-            'Solo Parent Barangay Certification' => 0.00,
-            'Barangay Business Clearance' => 150.00,
-            'Barangay Business Clearance / Permit' => 150.00,
+            'Certification for RSBSA Member' => 30.00,
+            'Certification for Building Permit' => 200.00, // Sec. 4 Construction
             'Barangay Building / Construction Clearance' => 200.00,
+
+            // Sec. 5 Exemptions
+            'Certificate of Indigency' => 0.00,
+
+            // Sec. 3.B Business Clearances & Sec. 3.C Aquatic Resources
+            'Barangay Business Clearance' => 100.00,
+            'Barangay Business Clearance / Permit' => 100.00,
+            'Aquatic Resources / Fisherfolk Clearance' => 100.00,
+
+            // Sec. 3.A.7 & Sec. 8 Katarungang Pambarangay
             'Certificate of No Objection (CNO)' => 100.00,
-            'Barangay Blotter Certification' => 50.00,
-            'Certification to File Action' => 100.00,
+            'Barangay Blotter Certification' => 100.00,
+            'Certification to File Action' => 300.00, // Sec. 8 CFA Fee
         ];
-        $amountPaid = $fees[$validated['doc_type']] ?? 50.00;
+        $amountPaid = $fees[$validated['doc_type']] ?? 30.00;
 
         $randNum = mt_rand(1000, 9999);
         $controlNo = 'DAC-' . date('Y') . '-' . $randNum;
@@ -305,7 +330,7 @@ class ResidentPortalController extends Controller
         }
 
         return redirect()->route('resident.dashboard')
-            ->with('success', "Your application for {$validated['doc_type']} has been submitted with Reference No. {$controlNo}!");
+            ->with('success', "Your pickup appointment for {$validated['doc_type']} has been booked with Reference No. {$controlNo}! Present your Claim Stub & Valid ID at Barangay Hall Window 1 once Ready for Pickup.");
     }
 
     /**
@@ -451,7 +476,7 @@ class ResidentPortalController extends Controller
     }
 
     /**
-     * Print Approved Clearance in A4 layout
+     * Portal requests serve as walk-in pickup appointments; redirect residents to Claim Stub
      */
     public function printCertificate($id)
     {
@@ -465,6 +490,12 @@ class ResidentPortalController extends Controller
 
         if (!$isOwner && !$user->isOfficial()) {
             abort(403, 'Unauthorized access to this official document.');
+        }
+
+        // Residents do not print digitalized certificates; they present their Appointment Claim Stub at Window 1
+        if (!$user->isOfficial()) {
+            return redirect()->route('resident.requests.claim-stub', $certificate->id)
+                ->with('info', 'Official certificates require wet signature and dry seal. Please present this Appointment & Claim Stub at Barangay Hall Window 1.');
         }
 
         return view('admin.certificates.print', compact('certificate'));

@@ -318,17 +318,17 @@
     </div>
   </div>
 
-  <!-- 5. GLOBAL MODAL: REQUEST OFFICIAL DOCUMENT -->
+  <!-- 5. GLOBAL MODAL: BOOK OFFICIAL DOCUMENT PICKUP APPOINTMENT -->
   <div id="residentApplyModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5 animate-in fade-in zoom-in-95 duration-200">
       
       <div class="flex items-center justify-between border-b border-slate-200 pb-3">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
-            <i class="fa-solid fa-file-circle-plus"></i>
+            <i class="fa-solid fa-calendar-check"></i>
           </div>
           <div>
-            <h3 class="font-extrabold text-base sm:text-lg text-slate-900">Request Official Document</h3>
+            <h3 class="font-extrabold text-base sm:text-lg text-slate-900">Book Document Pickup Appointment</h3>
             <p class="text-xs text-slate-500">Applicant: <strong class="text-slate-800">{{ Auth::user()?->name ?? 'Resident' }}</strong> ({{ Auth::user()?->resident?->purok ?? 'Dacutan' }})</p>
           </div>
         </div>
@@ -340,7 +340,7 @@
       <form action="{{ route('resident.apply') }}" method="POST" class="space-y-4">
         @csrf
 
-        <!-- Document Type (12 Document Offerings) -->
+        <!-- Document Type (Official Barangay Dacutan Certifications & Ordinance No. 2020-01) -->
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Document Type Requested *</label>
           <select 
@@ -350,23 +350,31 @@
             onchange="updateResModalFee()" 
             class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-bold focus:bg-white focus:ring-2 focus:ring-emerald-500"
           >
-            <optgroup label="── Personal Certificates & Clearances ──">
-              <option value="Barangay Clearance">Barangay Clearance / Certificate (Jobs, Postal ID, Bank)</option>
-              <option value="Certificate of Residency">Certificate of Residency (Proof of address)</option>
-              <option value="Certificate of Indigency">Certificate of Indigency (Free / DSWD, Medical Aid)</option>
-              <option value="Certificate of Good Moral Character">Certificate of Good Moral Character (School/Work)</option>
-              <option value="First-Time Jobseeker Certification (RA 11261)">First-Time Jobseeker Certification (Free under RA 11261)</option>
-              <option value="Barangay ID">Barangay ID (Local card validation)</option>
-              <option value="Solo Parent Barangay Certification">Solo Parent Barangay Certification (Free)</option>
+            <optgroup label="── Sec. 3.A Barangay Clearances (Ordinance No. 2020-01) ──">
+              <option value="Barangay Clearance">Barangay Clearance (Employment / General) - ₱30.00</option>
+              <option value="Certificate of Residency">Certificate of Residency - ₱30.00</option>
+              <option value="Certificate of Good Moral Character">Certificate of Good Moral Character - ₱30.00</option>
+              <option value="Certificate of Indigency">Certificate of Indigency (Sec. 5 Free Waiver) - ₱0.00</option>
             </optgroup>
-            <optgroup label="── Business & Property Clearances ──">
-              <option value="Barangay Business Clearance / Permit">Barangay Business Clearance / Permit (Commercial trade)</option>
-              <option value="Barangay Building / Construction Clearance">Barangay Building / Construction Clearance</option>
-              <option value="Certificate of No Objection (CNO)">Certificate of No Objection (CNO)</option>
+            <optgroup label="── Official Barangay Dacutan Certifications ──">
+              <option value="Certification for Delayed Registration">1. Certification for Delayed Registration - ₱30.00</option>
+              <option value="Certification for PWD">2. Certification for PWD (Sec. 5 Free Waiver) - ₱0.00</option>
+              <option value="Certification for Solo Parent">3. Certification for Solo Parent - ₱0.00</option>
+              <option value="Certification for Loan">4. Certification for Loan (Sec. 3.A.5) - ₱50.00</option>
+              <option value="Certification for ILECO (Electrification)">5. Certification for ILECO (Electrification) - ₱30.00</option>
+              <option value="Certification for Live-In">6. Certification for Live-In - ₱30.00</option>
+              <option value="Certification for Deceased / House">7. Certification for Deceased / House - ₱30.00</option>
+              <option value="Certification for First Time Job Seeker">8. Certification for First Time Job Seeker (RA 11261) - ₱0.00</option>
+              <option value="Certification for RSBSA Member">9. Certification for RSBSA Member (Farmers/Fisherfolks) - ₱30.00</option>
+              <option value="Certification for TIN ID">10. Certification for TIN ID / Proper ID - ₱30.00</option>
+              <option value="Certification for Building Permit">11. Certification for Building Permit (Sec. 4) - ₱200.00</option>
+              <option value="Certification for Electrical Permit">12. Certification for Electrical Permit (Sec. 3.A.6) - ₱30.00</option>
             </optgroup>
-            <optgroup label="── Legal & Dispute Records ──">
-              <option value="Barangay Blotter Certification">Barangay Blotter Certification</option>
-              <option value="Certification to File Action">Certification to File Action (CFA)</option>
+            <optgroup label="── Sec. 3.B Business, Sec. 3.C Aquatic & Sec. 8 Legal ──">
+              <option value="Barangay Business Clearance / Permit">Barangay Business Clearance / Permit (Sec. 3.B) - ₱100.00</option>
+              <option value="Aquatic Resources / Fisherfolk Clearance">Aquatic Resources Clearance (Talaba/Kasagan/Punot/Fishpond) - ₱100.00</option>
+              <option value="Barangay Blotter Certification">Barangay Case / Blotter Filing (Sec. 3.A.7) - ₱100.00</option>
+              <option value="Certification to File Action">Certification to File Action / CFA (Sec. 8) - ₱300.00</option>
             </optgroup>
           </select>
         </div>
@@ -378,7 +386,7 @@
             type="text" 
             name="purpose" 
             required 
-            placeholder="e.g. Local Employment, Scholarship, SSS Loan, Police Clearance" 
+            placeholder="e.g. Local Employment, ILECO Connection, Loan, RSBSA Registry" 
             class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-xs font-medium focus:bg-white focus:ring-2 focus:ring-emerald-500"
           >
         </div>
@@ -400,18 +408,18 @@
         <!-- Fee Preview Card -->
         <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
           <div>
-            <span class="text-slate-500 block text-[11px]">Official Barangay Regulatory Fee:</span>
-            <span class="font-bold text-slate-900 text-sm" id="resModalFeeText">₱50.00</span>
+            <span class="text-slate-500 block text-[11px]">Ordinance No. 2020-01 Regulatory Fee:</span>
+            <span class="font-bold text-slate-900 text-sm" id="resModalFeeText">₱30.00</span>
           </div>
           <span class="text-[10px] text-emerald-800 bg-emerald-100 font-extrabold px-2.5 py-1 rounded-full" id="resModalFeeBadge">
-            Payable upon release
+            Payable at Window 1 upon pickup
           </span>
         </div>
 
         <!-- Guidelines note -->
-        <p class="text-[11px] text-slate-500 bg-amber-50/60 p-2.5 rounded-xl border border-amber-200">
-          <i class="fa-solid fa-circle-info text-amber-600 mr-1"></i>
-          Standard processing turnaround is 15-30 minutes during official hours upon clerical review.
+        <p class="text-[11px] text-slate-600 bg-amber-50/80 p-3 rounded-xl border border-amber-200 leading-relaxed">
+          <i class="fa-solid fa-calendar-check text-amber-600 mr-1"></i>
+          <strong>Appointment Policy:</strong> Portal requests schedule your document for preparation. Official certificates are <strong>not issued digitally</strong> and must be claimed in person at <strong>Window 1</strong> with your Claim Stub &amp; Valid ID for official wet signature and dry seal.
         </p>
 
         <!-- Submit Button -->
@@ -420,7 +428,7 @@
             Cancel
           </button>
           <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-950/20 transition-all">
-            Submit Document Request
+            Book Pickup Appointment
           </button>
         </div>
 
@@ -441,7 +449,7 @@
           <div>
             <h3 class="font-extrabold text-base sm:text-lg text-slate-900" id="revModalDocType">Review Request Details</h3>
             <p class="text-xs text-slate-500">
-              Reference Control #: <strong class="font-mono text-emerald-700 font-bold" id="revModalControlNo">DAC-2026-XXXX</strong>
+              Appointment Control #: <strong class="font-mono text-emerald-700 font-bold" id="revModalControlNo">DAC-2026-XXXX</strong>
             </p>
           </div>
         </div>
@@ -453,7 +461,7 @@
       <!-- Current Status Banner -->
       <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" id="revStatusBanner">
         <div>
-          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider block">Application Status</span>
+          <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider block">Appointment &amp; Processing Status</span>
           <span class="text-sm font-extrabold text-slate-900" id="revStatusText">Under Clerical Evaluation</span>
         </div>
         <div class="flex items-center gap-2" id="revQuickBadges">
@@ -467,14 +475,14 @@
       <div class="space-y-3">
         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
           <i class="fa-solid fa-timeline text-emerald-600"></i>
-          <span>Official 2-Tier Process Workflow</span>
+          <span>Official 2-Tier Walk-In Pickup Workflow</span>
         </h4>
 
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-2" id="stepperContainer">
           <!-- Step 1 -->
           <div class="p-3 rounded-xl border text-center space-y-1 bg-emerald-50 border-emerald-300 text-emerald-900" id="step1">
             <div class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center mx-auto">1</div>
-            <p class="text-[11px] font-bold leading-tight">Submitted</p>
+            <p class="text-[11px] font-bold leading-tight">Booked</p>
             <span class="text-[9px] text-slate-500 block" id="step1Time">--</span>
           </div>
 
@@ -503,7 +511,7 @@
           <div class="p-3 rounded-xl border text-center space-y-1 bg-slate-50 border-slate-200 text-slate-600" id="step5">
             <div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center mx-auto">5</div>
             <p class="text-[11px] font-bold leading-tight">Claimed</p>
-            <span class="text-[9px] text-slate-400 block">Complete</span>
+            <span class="text-[9px] text-slate-400 block">In Person</span>
           </div>
         </div>
       </div>
@@ -511,7 +519,7 @@
       <!-- Application Details Table -->
       <div class="border border-slate-200 rounded-2xl overflow-hidden text-xs">
         <div class="bg-slate-50 px-4 py-2.5 font-bold text-slate-700 border-b border-slate-200">
-          Application Information & Fee Breakdown
+          Appointment Information &amp; Ordinance No. 2020-01 Fee Breakdown
         </div>
         <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
           <div class="space-y-2">
@@ -530,7 +538,7 @@
           </div>
           <div class="space-y-2 sm:pl-3 pt-2 sm:pt-0">
             <div>
-              <span class="text-slate-400 block text-[10px] uppercase font-bold">Regulatory Fee:</span>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Regulatory Fee (Payable at Hall):</span>
               <p class="font-bold text-slate-900" id="revModalFee">--</p>
             </div>
             <div>
@@ -549,40 +557,32 @@
       <div class="pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
         <div>
           <!-- Cancel Button (Only if Pending) -->
-          <form id="revCancelForm" action="" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to cancel this pending application?');">
+          <form id="revCancelForm" action="" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to cancel this pending appointment?');">
             @csrf
             <button 
               type="submit" 
               id="revBtnCancel" 
               class="hidden px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-all"
             >
-              <i class="fa-solid fa-trash-can mr-1"></i> Cancel Request
+              <i class="fa-solid fa-trash-can mr-1"></i> Cancel Appointment
             </button>
           </form>
         </div>
 
         <div class="flex items-center gap-2">
-          <!-- Print Claim Stub Button -->
+          <!-- Print Appointment Claim Stub Button -->
           <a 
             id="revBtnClaimStub" 
             href="#" 
             target="_blank" 
-            class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1.5"
+            class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
           >
-            <i class="fa-solid fa-receipt"></i>
-            <span>Print Claim Stub</span>
+            <i class="fa-solid fa-ticket"></i>
+            <span>Print Appointment &amp; Claim Stub</span>
           </a>
 
-          <!-- View / Print Certificate Button -->
-          <a 
-            id="revBtnPrintCert" 
-            href="#" 
-            target="_blank" 
-            class="hidden px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
-          >
-            <i class="fa-solid fa-print"></i>
-            <span>View Official Certificate</span>
-          </a>
+          <!-- Hidden legacy element kept for DOM compatibility -->
+          <a id="revBtnPrintCert" href="#" class="hidden"></a>
 
           <button type="button" onclick="closeReviewModal()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold">
             Close
@@ -659,7 +659,7 @@
       if (modal) modal.classList.add('hidden');
     }
 
-    // Fee preview calculator in apply modal
+    // Fee preview calculator in apply modal (Barangay Ordinance No. 2020-01)
     function updateResModalFee() {
       const select = document.getElementById('resModalDocType');
       if (!select) return;
@@ -667,26 +667,37 @@
       const feeText = document.getElementById('resModalFeeText');
       const feeBadge = document.getElementById('resModalFeeBadge');
 
-      const freeDocs = ['Certificate of Indigency', 'First-Time Jobseeker Certification (RA 11261)', 'Solo Parent Barangay Certification'];
+      const freeDocs = [
+        'Certificate of Indigency',
+        'Certification for PWD',
+        'Certification for Solo Parent',
+        'Solo Parent Barangay Certification',
+        'Certification for First Time Job Seeker',
+        'First-Time Jobseeker Certification (RA 11261)'
+      ];
       if (freeDocs.includes(docType)) {
         feeText.textContent = '₱0.00 (FREE WAIVER)';
-        feeBadge.textContent = 'Statutory Fee Waiver';
+        feeBadge.textContent = 'Ordinance Sec. 5 / RA 11261 Waiver';
         feeBadge.className = 'text-[10px] text-emerald-800 bg-emerald-100 font-extrabold px-2.5 py-1 rounded-full';
-      } else if (docType.includes('Business')) {
-        feeText.textContent = '₱150.00';
-        feeBadge.textContent = 'Payable upon release';
-        feeBadge.className = 'text-[10px] text-blue-800 bg-blue-100 font-bold px-2.5 py-1 rounded-full';
-      } else if (docType.includes('Building') || docType.includes('Construction')) {
+      } else if (docType === 'Certification to File Action') {
+        feeText.textContent = '₱300.00';
+        feeBadge.textContent = 'Ordinance Sec. 8 CFA Fee';
+        feeBadge.className = 'text-[10px] text-rose-800 bg-rose-100 font-bold px-2.5 py-1 rounded-full';
+      } else if (docType.includes('Building')) {
         feeText.textContent = '₱200.00';
-        feeBadge.textContent = 'Payable upon release';
+        feeBadge.textContent = 'Ordinance Sec. 4 Construction';
         feeBadge.className = 'text-[10px] text-purple-800 bg-purple-100 font-bold px-2.5 py-1 rounded-full';
-      } else if (docType.includes('Objection') || docType.includes('File Action')) {
+      } else if (docType.includes('Business') || docType.includes('Aquatic') || docType.includes('Blotter')) {
         feeText.textContent = '₱100.00';
-        feeBadge.textContent = 'Payable upon release';
+        feeBadge.textContent = 'Ordinance Sec. 3.B / 3.C / 3.A.7';
+        feeBadge.className = 'text-[10px] text-blue-800 bg-blue-100 font-bold px-2.5 py-1 rounded-full';
+      } else if (docType.includes('Loan')) {
+        feeText.textContent = '₱50.00';
+        feeBadge.textContent = 'Ordinance Sec. 3.A.5 Loan Fee';
         feeBadge.className = 'text-[10px] text-amber-800 bg-amber-100 font-bold px-2.5 py-1 rounded-full';
       } else {
-        feeText.textContent = '₱50.00';
-        feeBadge.textContent = 'Payable upon release';
+        feeText.textContent = '₱30.00';
+        feeBadge.textContent = 'Payable at Window 1 upon pickup';
         feeBadge.className = 'text-[10px] text-slate-800 bg-slate-100 font-bold px-2.5 py-1 rounded-full';
       }
     }
@@ -734,12 +745,12 @@
 
         // Status narrative text
         const statusNarratives = {
-          'Pending': 'Application received. Pending clerical review by Barangay Secretary.',
-          'Evaluated': 'Clerical review passed. Endorsed to Punong Barangay for approval.',
-          'Approved': 'Administrative approval granted by Punong Barangay. Queued for stamping.',
-          'Ready for Release': 'Document printed, signed & dry-sealed. Ready for pickup at Window 1!',
-          'Claimed': 'Document has been officially released to applicant. Transaction complete.',
-          'Cancelled': 'Application was cancelled.',
+          'Pending': 'Pickup appointment booked. Pending clerical review by Barangay Secretary.',
+          'Evaluated': 'Clerical review passed. Endorsed to Punong Barangay for executive signature.',
+          'Approved': 'Approved by Punong Barangay. Being printed and stamped with dry seal at Window 1.',
+          'Ready for Release': 'Hardcopy printed, wet-signed & dry-sealed! Proceed to Window 1 with your Claim Stub & Valid ID.',
+          'Claimed': 'Official hardcopy document has been claimed in person at Barangay Hall.',
+          'Cancelled': 'Appointment request was cancelled.',
           'Rejected': 'Application was not approved. Check remarks for details.'
         };
         document.getElementById('revStatusText').textContent = statusNarratives[cert.status] || cert.status;
@@ -773,15 +784,7 @@
         setStepActive(s4, cert.status === 'Approved', timeline.releasing.completed);
         setStepActive(s5, cert.status === 'Ready for Release', timeline.claimed.completed);
 
-        // Action Buttons
-        const btnPrint = document.getElementById('revBtnPrintCert');
-        if (actions.can_print) {
-          btnPrint.href = actions.print_url;
-          btnPrint.classList.remove('hidden');
-        } else {
-          btnPrint.classList.add('hidden');
-        }
-
+        // Action Buttons (Residents print Appointment & Claim Stub, not digitalized certificates)
         const btnClaimStub = document.getElementById('revBtnClaimStub');
         btnClaimStub.href = actions.claim_stub_url;
 
